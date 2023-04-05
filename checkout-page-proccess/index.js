@@ -48,9 +48,52 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
       // if every required field is filled:
       if (isRequiredFieldsAreFilled) {
+        // if street number is already exist
+        if (addressField.value.includes(`||${addField.value}`)) {
+          // console.log(
+          //   addressField.value,
+          //   " ===>> Already exist, submit form and return"
+          // );
+          submitBtn.click(); // click on real submit button immediately when field will be copied
+          return;
+        }
+
+        // if street number is already exist but user put different one
+        if (addressField.value.includes("||")) {
+          addressField.value = addressField.value.split("||")[0];
+          addressField.value = `${addressField.value} ||${addField.value}`;
+          // console.log(
+          //   addressField.value,
+          //   " ==>> Already exist,but different, REPLACE existing one, submit form and return"
+          // );
+          submitBtn.click(); // click on real submit button immediately when field will be copied
+          return;
+        }
+
+        // if street number is not exist, add street number and submit form
         addressField.value = `${addressField.value} ||${addField.value}`;
         submitBtn.click(); // click on real submit button immediately when field will be copied
       }
     });
   }
 });
+
+// const streetNumber = "100";
+// let str = "ul Hristo Botev ||101";
+
+// let newAddress = "";
+
+// // if street number is already exist
+// if (str.includes(`||${streetNumber}`)) {
+//   console.log(str, " ===>> Already exist, submit form and return");
+//   return;
+// }
+
+// if (str.includes("||")) {
+//   str = str.split("||")[0];
+//   str = `${str} ||${streetNumber}`;
+//   console.log(
+//     str,
+//     " ==>> Already exist,but different, REPLACE existing one, submit form and return"
+//   );
+// }

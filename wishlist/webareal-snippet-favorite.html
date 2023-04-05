@@ -1,0 +1,775 @@
+<style type="text/css">
+    #ge-favorite-button {
+        position: relative;
+        margin-right: 20px;
+        width: 42px;
+        height: 42px;
+        cursor: pointer;
+    }
+
+    @media (max-width: 767px) {
+        #ge-favorite-button {
+            margin-right: 10px;
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    #ge-favorite-button img {
+        width: 100%;
+        height: 100%;
+    }
+
+    #ge-favorite-button span {
+        position: absolute;
+        top: 0;
+        left: 30px;
+        padding: 0 4px;
+        height: 20px;
+        min-height: initial;
+        line-height: initial;
+        font-size: 11px;
+        font-weight: bold;
+        width: auto;
+        min-width: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50px;
+        background: #c40b0b;
+        color: white;
+    }
+
+    @media (max-width: 767px) {
+        #ge-favorite-button span {
+            left: 20px;
+            height: 16px;
+            min-width: 16px;
+            font-size: 10px;
+        }
+    }
+
+    #ge-favorite-lightbox {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        min-height: 100%;
+        z-index: 9999999999999999;
+        display: none;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #ge-favorite-lightbox-background {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.15);
+    }
+
+    #ge-favorite-lightbox-window {
+        position: relative;
+        width: 920px;
+        min-height: 600px;
+        background-color: white;
+        border-radius: 8px;
+        padding: 20px 20px 90px 20px;
+    }
+
+    @media (max-width: 1000px) {
+        #ge-favorite-lightbox-window {
+            width: 100%;
+            padding: 10px 10px 60px 10px;
+        }
+    }
+
+    #ge-favorite-lightbox-window-close {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
+
+    @media (max-width: 1000px) {
+        #ge-favorite-lightbox-window-close {
+            right: 10px;
+            top: 10px;
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    #ge-favorite-lightbox-window-close img {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    #ge-favorite-lightbox-window-summary {
+        position: absolute;
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+        height: 70px;
+        width: calc(100% - 40px);
+        background-color: rgb(245,245,245);
+        border-radius: 8px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    @media (max-width: 1000px) {
+        #ge-favorite-lightbox-window-summary {
+            height: 50px;
+            padding: 0 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            width: calc(100% - 20px);
+        }
+    }
+
+    #ge-favorite-lightbox-window-summary-title {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    @media (max-width: 1000px) {
+        #ge-favorite-lightbox-window-summary-title {
+            font-size: 18px;
+        }
+    }
+
+    @media (max-width: 500px) {
+        #ge-favorite-lightbox-window-summary-title {
+            text-align: center;
+        }
+    }
+
+    #ge-favorite-lightbox-window-summary-button {
+        padding: 0 20px;
+        height: 50px;
+        line-height: 50px;
+        border-radius: 4px;
+        background-color: #c40b0b;
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        cursor: pointer;
+        text-transform: uppercase;
+    }
+    #ge-favorite-lightbox-window-summary-button:hover {
+        background-color: #a71414;
+    }
+
+    @media (max-width: 1000px) {
+        #ge-favorite-lightbox-window-summary-button {
+            padding: 0 10px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 14px;
+        }
+    }
+
+    @media (max-width: 500px) {
+        #ge-favorite-lightbox-window-summary-button {
+            display: none;
+        }
+    }
+
+    #ge-favorite-lightbox-window-title {
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    @media (max-width: 1000px) {
+        #ge-favorite-lightbox-window-title {
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+    }
+
+    #ge-favorite-lightbox-window-products {
+        margin-bottom: 20px;
+    }
+
+    .ge-favorite-lightbox-window-product {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgb(245,245,245);
+        padding-bottom: 10px;
+    }
+
+    .ge-favorite-lightbox-window-product__left {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .ge-favorite-lightbox-window-product__left__photo {
+        width: 50px;
+        height: 50px;
+    }
+
+    @media (max-width: 1000px) {
+        .ge-favorite-lightbox-window-product__left__photo {
+            width: 40px;
+            height: 40px;
+        }
+    }
+
+    .ge-favorite-lightbox-window-product__left__photo img {
+        display: block;
+        width: 50px;
+        height: 50px;
+    }
+
+    @media (max-width: 1000px) {
+        .ge-favorite-lightbox-window-product__left__photo img {
+            width: 40px;
+            height: 40px;
+        }
+    }
+
+    .ge-favorite-lightbox-window-product__left__info {
+        margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    @media (max-width: 1000px) {
+        .ge-favorite-lightbox-window-product__left__info {
+            margin-left: 10px;
+        }
+    }
+
+    .ge-favorite-lightbox-window-product__left__info__name {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    @media (max-width: 1000px) {
+        .ge-favorite-lightbox-window-product__left__info__name {
+            font-size: 14px;
+        }
+    }
+
+    .ge-favorite-lightbox-window-product__left__info__values {
+        margin-top: 5px;
+        display: flex;
+        flex-direction: row;
+        font-size: 14px;
+    }
+
+    @media (max-width: 1000px) {
+        .ge-favorite-lightbox-window-product__left__info__values {
+            font-size: 12px;
+        }
+    }
+
+    @media (max-width: 500px) {
+        .ge-favorite-lightbox-window-product__left__info__values {
+            display: none;
+        }
+    }
+
+    .ge-favorite-lightbox-window-product__left__info__values span {
+        margin-right: 10px;
+    }
+
+    @media (max-width: 1000px) {
+        .ge-favorite-lightbox-window-product__left__info__values span {
+            margin-right: 5px;
+        }
+    }
+
+    .ge-favorite-lightbox-window-product__left__info__values span:last-of-type {
+        margin-right: 0;
+        font-weight: bold;
+    }
+
+    .ge-favorite-lightbox-window-product__right {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 50px;
+    }
+
+    @media (max-width: 1000px) {
+        .ge-favorite-lightbox-window-product__right {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height: 40px;
+        }
+    }
+
+    .ge-favorite-lightbox-window-product__right__button {
+        width: 30px;
+        height: 30px;
+        border-radius: 4px;
+        background-color: #c40b0b;
+        color: white;
+        cursor: pointer;
+        position: relative;
+    }
+    .ge-favorite-lightbox-window-product__right__button:hover {
+        background-color: #a71414;
+    }
+
+    .ge-favorite-lightbox-window-product__right__counter {
+        margin-right: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 40px;
+        border-radius: 8px;
+        overflow: hidden;
+        border: 4px solid rgb(245,245,245);
+    }
+
+    @media (max-width: 1000px) {
+        .ge-favorite-lightbox-window-product__right__counter {
+            display: none;
+        }
+    }
+
+    .ge-favorite-lightbox-window-product__right__counter__button {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .ge-favorite-lightbox-window-product__right__counter__button:hover {
+        background-color: rgb(250,250,250);
+    }
+
+    .ge-favorite-lightbox-window-product__right__counter__value {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+    }
+
+    .ge-favorite-lightbox-window-product__right__button img {
+        position: absolute;
+        margin: auto;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 16px;
+        height: 16px;
+    }
+
+    .ge-favorite-lightbox-window-product__right__delete {
+        width: 30px;
+        height: 30px;
+        border-radius: 4px;
+        background-color: white;
+        color: white;
+        cursor: pointer;
+        position: relative;
+        margin-left: 10px;
+    }
+    .ge-favorite-lightbox-window-product__right__delete:hover {
+        background-color: rgb(250,250,250);
+    }
+
+    .ge-favorite-lightbox-window-product__right__delete img {
+        position: absolute;
+        margin: auto;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 16px;
+        height: 16px;
+    }
+
+    .ge-favorite-product-button {
+        width: 40px;
+        height: 40px;
+        border-radius: 4px;
+        background-color: white;
+        color: white;
+        cursor: pointer;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        z-index: 5;
+        border: 2px solid rgb(245,245,245);
+    }
+    .ge-favorite-product-button:hover {
+        background-color: rgb(245,245,245);
+    }
+    .ge-favorite-product-button img:last-of-type {
+        display: none;
+    }
+
+    .ge-favorite-product-button-active img:last-of-type {
+        display: block;
+    }
+    .ge-favorite-product-button-active img:first-of-type {
+        display: none;
+    }
+
+    #ge-favorite-product-button-icon {
+        position: absolute !important;
+        margin: auto !important;
+        left: 0 !important;
+        top: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 24px !important;
+        height: 24px !important;
+    }
+
+    .ge-favorite-product-detail-button {
+        margin-left: 10px;
+        width: 50px;
+        height: 50px;
+        border-radius: 4px;
+        background-color: white;
+        color: white;
+        cursor: pointer;
+        border: 2px solid rgb(245,245,245);
+        position: relative;
+    }
+    .ge-favorite-product-detail-button:hover {
+        background-color: rgb(245,245,245);
+    }
+    .ge-favorite-product-detail-button img:last-of-type {
+        display: none;
+    }
+
+    .ge-favorite-product-detail-button-active img:last-of-type {
+        display: block;
+    }
+    .ge-favorite-product-detail-button-active img:first-of-type {
+        display: none;
+    }
+
+    #ge-favorite-product-detail-button-icon {
+        position: absolute !important;
+        margin: auto !important;
+        left: 0 !important;
+        top: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 30px !important;
+        height: 30px !important;
+    }
+</style>
+<div id="ge-favorite-lightbox">
+    <div id="ge-favorite-lightbox-background"></div>
+    <div id="ge-favorite-lightbox-window">
+        <div id="ge-favorite-lightbox-window-title">Obľúbené produkty</div>
+        <div id="ge-favorite-lightbox-window-products">
+        </div>
+        <div id="ge-favorite-lightbox-window-summary">
+            <div id="ge-favorite-lightbox-window-summary-title">Celkom: <span>0</span> €</div>
+            <div id="ge-favorite-lightbox-window-summary-button">Všetko do košíka</div>
+        </div>
+        <div id="ge-favorite-lightbox-window-close">
+            <img src="https://api.goodeshop.sk/img/webareal-favorite-2.png" />
+        </div>
+    </div>
+</div>
+<div id="ge-favorite-template" style="display: none;">
+    <div class="ge-favorite-lightbox-window-product" data-id="{ID}">
+        <div class="ge-favorite-lightbox-window-product__left">
+            <div class="ge-favorite-lightbox-window-product__left__photo">{IMAGE}</div>
+            <div class="ge-favorite-lightbox-window-product__left__info">
+                <div class="ge-favorite-lightbox-window-product__left__info__name">{NAME}</div>
+                <div class="ge-favorite-lightbox-window-product__left__info__values">
+                    <span style="color:{COLOR};">Skladom</span>
+                    <span>Číslo: {NUMBER}</span>
+                    <span>Cena: {PRICE} €</span>
+                </div>
+            </div>
+        </div>
+        <div class="ge-favorite-lightbox-window-product__right">
+            <div class="ge-favorite-lightbox-window-product__right__counter">
+                <div class="ge-favorite-lightbox-window-product__right__counter__button" data-type="minus">-</div>
+                <div class="ge-favorite-lightbox-window-product__right__counter__value">{COUNT}</div>
+                <div class="ge-favorite-lightbox-window-product__right__counter__button" data-type="plus">+</div>
+            </div>
+            <div class="ge-favorite-lightbox-window-product__right__button" title="Pridať do košíka">
+                <img src="https://api.goodeshop.sk/img/webareal-favorite-3.png" />
+            </div>
+            <div class="ge-favorite-lightbox-window-product__right__delete" title="Zmazať">
+                <img src="https://api.goodeshop.sk/img/webareal-favorite-6.png" />
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+<script type="text/javascript">
+    function getProducts() {
+        var products = Cookies.get('ge-favorite');
+
+        if (typeof products !== 'undefined') {
+            return JSON.parse(products);
+        }
+
+        return {};
+    }
+
+    function getTotal() {
+        var products = getProducts();
+
+        if (typeof products !== 'undefined') {
+            var total = 0;
+            var ids = Object.keys(products);
+
+            for (var i = 0; i < ids.length; i++) {
+                var product = products[ids[i]];
+
+                total += parseFloat(product.price) * parseInt(product.count);
+            }
+
+            return (Math.round(total * 100) / 100).toFixed(2);
+        }
+
+        return 0;
+    }
+
+    function setActive() {
+        var products = getProducts();
+
+        $('.productBody').each(function() {
+            $(this).find('.ge-favorite-product-button').removeClass('ge-favorite-product-button-active');
+
+            if ($(this).find('form').length > 0) {
+                var id = /pid=([0-9]+)/.exec($(this).find('form').eq(0).attr('action'));
+
+                if (id.length === 2) {
+                    if (products.hasOwnProperty(id[1])) {
+                        $(this).find('.ge-favorite-product-button').addClass('ge-favorite-product-button-active');
+                    }
+                }
+            }
+        });
+
+        if ($('.ge-favorite-product-detail-button').length === 1 && typeof product_information !== 'undefined') {
+            $('.ge-favorite-product-detail-button').removeClass('ge-favorite-product-detail-button-active');
+
+            if (products.hasOwnProperty(product_information.id)) {
+                $('.ge-favorite-product-detail-button').addClass('ge-favorite-product-detail-button-active');
+            }
+        }
+    }
+
+    function setCounter() {
+        var products = getProducts();
+
+        $('#ge-favorite-button span').html(Object.keys(products).length);
+    }
+
+    $(document).on('ready', function() {
+        // Menu button
+        $('#basket_icon').before('<div id="ge-favorite-button"><img src="https://api.goodeshop.sk/img/webareal-favorite-1.png" /><span>0</span></div>');
+
+        // Zoznam favorite
+        $('.productBody .img_box').before('<div class="ge-favorite-product-button" title="Pridať do obľúbených"><img id="ge-favorite-product-button-icon" src="https://api.goodeshop.sk/img/webareal-favorite-5.png" /><img id="ge-favorite-product-button-icon" src="https://api.goodeshop.sk/img/webareal-favorite-4.png" /></div>');
+
+        // Detail button
+        $('.product-detail-container .product-cart-info .product-cart-btn').after('<div class="ge-favorite-product-detail-button" title="Pridať do obľúbených"><img id="ge-favorite-product-detail-button-icon" src="https://api.goodeshop.sk/img/webareal-favorite-5.png" /><img id="ge-favorite-product-detail-button-icon" src="https://api.goodeshop.sk/img/webareal-favorite-4.png" /></div>');
+
+        setTimeout(function() { setActive(); setCounter(); }, 500);
+
+        $(document).on('click', '#ge-favorite-lightbox-background, #ge-favorite-lightbox-window-close', function() {
+            $('#ge-favorite-lightbox').css('display', 'none');
+        });
+
+        $(document).on('click', '#ge-favorite-button', function() {
+            var products = getProducts();
+            var ids = Object.keys(products);
+            var content = '';
+            var template = $('#ge-favorite-template').html();
+
+            for (var i = 0; i < ids.length; i++) {
+                var product = products[ids[i]];
+
+                content += template
+                    .replace('{ID}', ids[i])
+                    .replace('{IMAGE}', '<img src="' + product.img + '" />')
+                    .replace('{NAME}', product.name)
+                    .replace('{NUMBER}', product.number)
+                    .replace('{PRICE}', product.price.replace('.', ','))
+                    .replace('{IMAGE}', product.img)
+                    .replace('{COLOR}', product.stock ? '#34d22f;' : '#d22f2f')
+                    .replace('{COUNT}', product.count);
+            }
+
+            $('#ge-favorite-lightbox-window-products').html(content);
+            $('#ge-favorite-lightbox').css('display', 'flex');
+            $('#ge-favorite-lightbox-window-summary-title span').html(getTotal().toString().replace('.', ','));
+        });
+
+        $(document).on('click', '.ge-favorite-product-button', function() {
+            var parent = $(this).closest('.productBody');
+
+            if (parent.length > 0) {
+                var img_parent = parent.find('.img_box img');
+
+                if (img_parent.length > 0) {
+                    var img = img_parent.eq(0).attr('src');
+                    var name = parent.find('.productTitleContent a').html();
+                    var number = parent.find('.productNumberList span').html();
+                    var stock = parent.find('.stock_yes').length > 0;
+                    var price = parent.find('.product_price_text').html().replace(/[^0-9,.]/g, '').replace(',', '.');
+                    var id = /pid=([0-9]+)/.exec(parent.find('form').eq(0).attr('action'));
+
+                    if (id.length === 2) {
+                        var products = getProducts();
+
+                        if (products.hasOwnProperty(id[1])) {
+                            delete products[id[1]];
+
+                            $(this).removeClass('ge-favorite-product-button-active');
+
+                            Cookies.set('ge-favorite', JSON.stringify(products), { expires: 365, path: '/' });
+
+                            setCounter();
+                            return;
+                        }
+
+                        var product = {
+                            id: id[1],
+                            img: img,
+                            name: name,
+                            number: number,
+                            stock: stock,
+                            price: price,
+                            count: 1,
+                        };
+
+                        $(this).addClass('ge-favorite-product-button-active');
+
+                        Cookies.set('ge-favorite', JSON.stringify(Object.assign(products, { [id[1]]: product })), { expires: 365, path: '/' });
+
+                        setCounter();
+                    }
+                }
+            }
+        });
+
+        $(document).on('click', '.ge-favorite-lightbox-window-product__right__delete', function() {
+            var id = $(this).closest('.ge-favorite-lightbox-window-product').data('id');
+            var products = getProducts();
+
+            delete products[id];
+
+            Cookies.set('ge-favorite', JSON.stringify(products), { expires: 365, path: '/' });
+
+            $(this).closest('.ge-favorite-lightbox-window-product').remove();
+
+            setActive();
+            setCounter();
+
+            $('#ge-favorite-lightbox-window-summary-title span').html(getTotal().toString().replace('.', ','));
+        });
+
+        $(document).on('click', '.ge-favorite-lightbox-window-product__right__counter__button', function() {
+            var type = $(this).data('type');
+            var id = $(this).closest('.ge-favorite-lightbox-window-product').data('id');
+            var countElem = $(this).closest('.ge-favorite-lightbox-window-product__right__counter').find('.ge-favorite-lightbox-window-product__right__counter__value');
+            var count = parseInt(countElem.html());
+
+            count += (type === 'plus' ? 1 : -1);
+            count = Math.max(count, 1);
+            countElem.html(count);
+
+            var products = getProducts();
+            var product = products[id];
+            product.count = count;
+
+            Cookies.set('ge-favorite', JSON.stringify(Object.assign(products, { [id]: product })), { expires: 365, path: '/' });
+
+            $('#ge-favorite-lightbox-window-summary-title span').html(getTotal().toString().replace('.', ','));
+        });
+
+        $(document).on('click', '.ge-favorite-lightbox-window-product__right__button', function() {
+            var id = $(this).closest('.ge-favorite-lightbox-window-product').data('id');
+            var products = getProducts();
+            var product = products[id];
+
+            $.post('/' + BS.User.domain + '/buy-product.htm?pid=' + id, { kusy: product.count }, function( data ) {
+                window.location = window.location.pathname;
+            });
+        });
+
+        $(document).on('click', '#ge-favorite-lightbox-window-summary-button', function() {
+            var products = getProducts();
+            var ids = Object.keys(products);
+
+            for (var i = 0; i < ids.length; i++) {
+                var end = (i + 1) === ids.length;
+                var request = $.post('/' + BS.User.domain + '/buy-product.htm?pid=' + ids[i], { kusy: products[ids[i]].count });
+
+                if (end) {
+                    request.done(function() {
+                        window.location = window.location.pathname;
+                    });
+                }
+            }
+
+        });
+
+        $(document).on('click', '.ge-favorite-product-detail-button', function() {
+            if (typeof product_information !== 'undefined') {
+                var products = getProducts();
+
+                if (products.hasOwnProperty(product_information.id)) {
+                    delete products[product_information.id];
+
+                    $(this).removeClass('ge-favorite-product-detail-button-active');
+
+                    Cookies.set('ge-favorite', JSON.stringify(products), { expires: 365, path: '/' });
+
+                    setCounter();
+                    return;
+                }
+
+                var parent = $(this).closest('.product-detail-container');
+                var product = {
+                    id: product_information.id,
+                    img: parent.find('#productGallery a').length > 0 ? parent.find('#productGallery a').eq(0).attr('href') : '',
+                    name: product_information.name,
+                    number: parent.find('input[name="number"]').val(),
+                    stock: parent.find('.stock_yes').length > 0,
+                    price: product_information.price,
+                    count: 1,
+                };
+
+                $(this).addClass('ge-favorite-product-detail-button-active');
+
+                Cookies.set('ge-favorite', JSON.stringify(Object.assign(products, { [product_information.id]: product })), { expires: 365, path: '/' });
+
+                setCounter();
+            }
+        });
+    });
+</script>
