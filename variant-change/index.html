@@ -1,0 +1,4586 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml" lang="sk" class="tmpl__titanium">
+  <head>
+      <script>
+          window.cookie_preferences = getCookieSettings('cookie_preferences');
+          window.cookie_statistics = getCookieSettings('cookie_statistics');
+          window.cookie_marketing = getCookieSettings('cookie_marketing');
+
+          function getCookieSettings(cookie_name) {
+              if (document.cookie.length > 0)
+              {
+                  cookie_start = document.cookie.indexOf(cookie_name + "=");
+                  if (cookie_start != -1)
+                  {
+                      cookie_start = cookie_start + cookie_name.length + 1;
+                      cookie_end = document.cookie.indexOf(";", cookie_start);
+                      if (cookie_end == -1)
+                      {
+                          cookie_end = document.cookie.length;
+                      }
+                      return unescape(document.cookie.substring(cookie_start, cookie_end));
+                  }
+              }
+              return false;
+          }
+      </script>
+            <title>Obrazy na plátne - PREMIUM ART – Čierny býk</title>
+    <script type="text/javascript">var action_unavailable='action_unavailable';var id_language = 'sk';var id_country_code = 'SK';var language_code = 'sk-SK';var path_request = '/request.php';var type_request = 'POST';var cache_break = "1920"; var enable_console_debug = false; var enable_logging_errors = false;var administration_id_language = 'sk';var administration_id_country_code = 'SK';</script>          <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+      <script type="text/javascript" src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js" ></script>
+              <script src="/wa_script/js/jquery.hoverIntent.minified.js?_=2023-03-28-09-41" type="text/javascript"></script>
+    <script type="text/javascript" src="/adminold/jscripts/jquery.qtip.min.js?_=2023-03-28-09-41"></script>
+              <script src="/wa_script/js/jquery.selectBoxIt.min.js?_=2023-03-28-09-41" type="text/javascript"></script>
+              <script src="/wa_script/js/bs_overlay.js?_=2023-03-28-09-41" type="text/javascript"></script>
+    <script src="/wa_script/js/bs_design.js?_=2023-03-28-09-41" type="text/javascript"></script>
+    <script src="/adminold/jscripts/wa_translation.js?_=2023-03-28-09-41" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="/css/jquery.selectBoxIt.wa_script.css?_=2023-03-28-09-41" media="screen, projection">
+    <link rel="stylesheet" type="text/css" href="/css/jquery.qtip.lupa.css?_=2023-03-28-09-41">
+    
+              <script src="/wa_script/js/jquery.colorbox-min.js?_=2023-03-28-09-41" type="text/javascript"></script>
+      <link rel="stylesheet" type="text/css" href="/css/colorbox.css?_=2023-03-28-09-41">
+      <script type="text/javascript">
+        jQuery(document).ready(function() {
+          (function() {
+            function createGalleries(rel) {
+              var regex = new RegExp(rel + "\\[(\\d+)]"),
+                  m, group = "g_" + rel, groupN;
+              $("a[rel*=" + rel + "]").each(function() {
+                m = regex.exec(this.getAttribute("rel"));
+                if(m) {
+                  groupN = group + m[1];
+                } else {
+                  groupN = group;
+                }
+                $(this).colorbox({
+                  rel: groupN,
+                  slideshow:false,
+                   maxWidth: "85%",
+                   maxHeight: "85%",
+                   returnFocus: false
+                });
+              });
+            }
+            createGalleries("lytebox");
+            createGalleries("lyteshow");
+          })();
+        });</script>
+      <script type="text/javascript">
+  function init_products_hovers()
+  {
+    jQuery(".product").hoverIntent({
+      over: function(){
+        jQuery(this).find(".icons_width_hack").animate({width: "130px"}, 300, function(){});
+      } ,
+      out: function(){
+        jQuery(this).find(".icons_width_hack").animate({width: "10px"}, 300, function(){});
+      },
+      interval: 40
+    });
+  }
+  jQuery(document).ready(function(){
+
+    jQuery(".param select, .sorting select").selectBoxIt();
+
+    jQuery(".productFooter").click(function()
+    {
+      var $product_detail_link = jQuery(this).parent().find("a:first");
+
+      if($product_detail_link.length && $product_detail_link.attr("href"))
+      {
+        window.location.href = $product_detail_link.attr("href");
+      }
+    });
+    init_products_hovers();
+    
+    ebar_details_visibility = {};
+    ebar_details_visibility["user"] = false;
+    ebar_details_visibility["basket"] = false;
+
+    ebar_details_timer = {};
+    ebar_details_timer["user"] = setTimeout(function(){},100);
+    ebar_details_timer["basket"] = setTimeout(function(){},100);
+
+    function ebar_set_show($caller)
+    {
+      var $box_name = $($caller).attr("id").split("_")[0];
+
+      ebar_details_visibility["user"] = false;
+      ebar_details_visibility["basket"] = false;
+
+      ebar_details_visibility[$box_name] = true;
+
+      resolve_ebar_set_visibility("user");
+      resolve_ebar_set_visibility("basket");
+    }
+
+    function ebar_set_hide($caller)
+    {
+      var $box_name = $($caller).attr("id").split("_")[0];
+
+      ebar_details_visibility[$box_name] = false;
+
+      clearTimeout(ebar_details_timer[$box_name]);
+      ebar_details_timer[$box_name] = setTimeout(function(){resolve_ebar_set_visibility($box_name);},300);
+    }
+
+    function resolve_ebar_set_visibility($box_name)
+    {
+      if(   ebar_details_visibility[$box_name]
+         && jQuery("#"+$box_name+"_detail").is(":hidden"))
+      {
+        jQuery("#"+$box_name+"_detail").slideDown(300);
+      }
+      else if(   !ebar_details_visibility[$box_name]
+              && jQuery("#"+$box_name+"_detail").not(":hidden"))
+      {
+        jQuery("#"+$box_name+"_detail").slideUp(0, function() {
+          $(this).css({overflow: ""});
+        });
+      }
+    }
+
+    
+    jQuery("#user_icon, #basket_icon").hoverIntent({
+      over: function(){
+        ebar_set_show(this);
+        
+      } ,
+      out: function(){
+        ebar_set_hide(this);
+      },
+      interval: 40
+    });
+    
+    jQuery("#user_icon").click(function(e)
+    {
+      if(jQuery(e.target).attr("id") == "user_icon")
+      {
+        window.location.href = "https://www.obraznastenu.sk/obraznastenu/e-login/";
+      }
+    });
+
+    jQuery("#basket_icon").click(function(e)
+    {
+      if(jQuery(e.target).attr("id") == "basket_icon")
+      {
+        window.location.href = "https://www.obraznastenu.sk/obraznastenu/e-basket/";
+      }
+    });
+  
+  });
+</script>        <meta http-equiv="Content-language" content="sk">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="slovak">
+    <meta name="keywords" content="obrazy, obrazy na plátne, obrazy na stenu, moderné obrazy, moderné obrazy na stenu,  pozlacovacie plátky">
+    <meta name="description" content="Ak hľadáte jedinečný doplnok do svojho interiéru, vyberte si našu novinku PREMIUM ART! Bez ohľadu na priestor, obrazy s nanesenými zlatými plátkami okamžite dodajú pocit sofistikovanosti a luxusu. Budú skvelým doplnkom pre vaše steny.">
+    <meta name="revisit-after" content="1 Days">
+    <meta name="distribution" content="global">
+    <meta name="expires" content="never">
+              <meta name="expires" content="never">
+                <link rel="previewimage" href="https://www.obraznastenu.sk/fotky12085/fotos/obraz-na-stenu-so-zlatymi-platkami_premium-art_XOGPA001E1-x.jpg" />
+      <meta property="og:image" content="http://www.obraznastenu.sk/fotky12085/fotos/XOGPA001E1-mini.jpg" />
+<meta property="og:image:secure_url" content="https://www.obraznastenu.sk/fotky12085/fotos/XOGPA001E1-mini.jpg" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:url" content="http://www.obraznastenu.sk/obraznastenu/eshop/122-1-Moderne-obrazy/0/5/50660-Obrazy-na-platne-PREMIUM-ART-Cierny-byk" />
+<meta property="og:title" content="Obrazy na plátne - PREMIUM ART – Čierny býk" />
+<meta property="og:description" content="Kolekcia so zlatými plátkami na obraze Ak hľadáte jedinečný doplnok do svojho interiéru, vyberte si našu novinku PREMIUM ART! Bez ohľadu na priestor, obrazy s nanesenými zlatými plátkami okamžite dodajú pocit sofistikovanosti a luxusu. Budú skvelým doplnkom pre vaše steny." />
+<meta property="og:type" content="product" />
+<meta property="og:site_name" content="Moderné obrazy na stenu a dekorácie - Dávame stenám život" />
+
+<meta name="google-site-verification" content="pzXpG6FhxIO51UqNbhPWvO76iKHsVQDCxwGrZ242wy8"/>            <meta name="robots" content="index, follow">
+                  <link href="//www.obraznastenu.sk/fotky12085/favicon.png" rel="icon" type="image/png">
+      <link rel="shortcut icon" type="image/png" href="//www.obraznastenu.sk/fotky12085/favicon.png">
+              <link rel="stylesheet" type="text/css" href="/css/lang_dependent_css/lang_sk.css?_=2023-03-28-09-41" media="screen, projection">
+            <link rel='stylesheet' type='text/css' href='/wa_script/js/styles.css?_=2023-03-28-09-41'>
+    <script language='javascript' type='text/javascript' src='/wa_script/js/javascripts.js?_=2023-03-28-09-41'></script>
+    <script language='javascript' type='text/javascript' src='/wa_script/js/check_tel.js?_=2023-03-28-09-41'></script>
+        <script type="text/javascript" src="/wa_script/js/bs_user.js?_=2023-03-28-09-41"></script>
+    <script type="text/javascript" src="/wa_script/js/bs_fce.js?_=2023-03-28-09-41"></script>
+    <script type="text/javascript" src="/wa_script/js/bs_fixed_bar.js?_=2023-03-28-09-41"></script>
+    <script type="text/javascript" src="/bohemiasoft/js/bs.js?_=2023-03-28-09-41"></script>
+    <script src="/wa_script/js/jquery.number.min.js?_=2023-03-28-09-41" type="text/javascript"></script>
+    <script type="text/javascript">
+        BS.User.id = 12085;
+        BS.User.domain = "obraznastenu";
+        BS.User.is_responsive_layout = true;
+        BS.User.max_search_query_length = 50;
+        BS.User.max_autocomplete_words_count = 5;
+
+        WA.Translation._autocompleter_ambiguous_query = ' Hľadaný výraz je pre našeptávač príliš všeobecný. Zadajte prosím ďalšie znaky, slová alebo pokračujte odoslaním formulára pre vyhľadávanie.';
+        WA.Translation._autocompleter_no_results_found = ' Neboli nájdené žiadne produkty ani kategórie.';
+        WA.Translation._error = " Chyba";
+        WA.Translation._success = " Úspech";
+        WA.Translation._shipping_change_selected = " Zmeniť...";
+        WA.Translation._shipping_deliver_to_address = "_shipping_deliver_to_address";
+
+        BS.Design.template = {
+          name: "titanium",
+          is_selected: function(name) {
+            if(Array.isArray(name)) {
+              return name.indexOf(this.name) > -1;
+            } else {
+              return name === this.name;
+            }
+          }
+        };
+        BS.Design.isLayout3 = true;
+        BS.Design.templates = {
+          TEMPLATE_ARGON: "argon",TEMPLATE_NEON: "neon",TEMPLATE_CARBON: "carbon",TEMPLATE_XENON: "xenon",TEMPLATE_AURUM: "aurum",TEMPLATE_CUPRUM: "cuprum",TEMPLATE_ERBIUM: "erbium",TEMPLATE_CADMIUM: "cadmium",TEMPLATE_BARIUM: "barium",TEMPLATE_CHROMIUM: "chromium",TEMPLATE_SILICIUM: "silicium",TEMPLATE_IRIDIUM: "iridium",TEMPLATE_INDIUM: "indium",TEMPLATE_OXYGEN: "oxygen",TEMPLATE_HELIUM: "helium",TEMPLATE_FLUOR: "fluor",TEMPLATE_FERRUM: "ferrum",TEMPLATE_TERBIUM: "terbium",TEMPLATE_URANIUM: "uranium",TEMPLATE_ZINCUM: "zincum",TEMPLATE_CERIUM: "cerium",TEMPLATE_KRYPTON: "krypton",TEMPLATE_THORIUM: "thorium",TEMPLATE_ETHERUM: "etherum",TEMPLATE_KRYPTONIT: "kryptonit",TEMPLATE_TITANIUM: "titanium",TEMPLATE_PLATINUM: "platinum"            };
+    </script>
+    <meta name="google-site-verification"
+content="9KQWSYhz7Uk0LuCFjJ-FJy-gAt250mE9tuEo4pBX5I4">
+<meta name="google-site-verification" content="pzXpG6FhxIO51UqNbhPWvO76iKHsVQDCxwGrZ242wy8">
+
+<meta name="p:domain_verify" content="e3b02b98b82ae7f24cf57d4e04052b53">
+
+<meta name="google-site-verification" content="BnMYSYgY0yjfH_f-pudSsZuxeQI-oh-D4tEsykfYd70">
+
+<!-- Global site tag (gtag.js) - AdWords: 841054130 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-841054130"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'AW-841054130');
+</script>
+
+<script type="text/javascript" id="pap_x2s6df8d" src="https://login.dognet.sk/scripts/fj27g82d"></script>
+<script type="text/javascript">
+PostAffTracker.setAccountId('a0ce44a8');
+try {
+var CampaignID='242392af';
+PostAffTracker.track();
+} catch (err) { }
+</script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PTZSKFW');</script>
+<!-- End Google Tag Manager -->
+
+<meta name="facebook-domain-verification" content="wsh2ss7k7q4koofxdoizw3c5h4w2qh">
+
+<meta name="p:domain_verify" content="cb9dd2f42a3bc6c3afd047c78cdbf315">
+      <script src="/js/progress_button/modernizr.custom.js"></script>
+                  <link rel="stylesheet" type="text/css" href="/bower_components/owl.carousel/dist/assets/owl.carousel.min.css" />
+        <link rel="stylesheet" type="text/css" href="/bower_components/owl.carousel/dist/assets/owl.theme.default.min.css" />
+        <script src="/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+                  <link rel="stylesheet" type="text/css" href="/bower_components/priority-nav/dist/priority-nav-core.css" />
+        <script src="/bower_components/priority-nav/dist/priority-nav.js"></script>
+                  <link rel="stylesheet" type="text/css" href="//static.bohemiasoft.com/jave/style.css?_=2023-03-28-09-41" media="screen">
+                <link rel="stylesheet" type="text/css" href="/css/font-awesome.4.7.0.min.css" media="screen">
+      <link rel="stylesheet" type="text/css" href="/sablony/nove/titanium/titaniumpurple/css/product_var3.css?_=2023-03-28-09-41" media="screen">
+      <style>
+:root {
+    --primary: #f1c325;
+    --primary-dark: #2b1eb5;
+    --secondary: #f6f7fc;
+    --secondary-v2: #626780;
+    --element-color: #1f242d;
+    --stars: #ffcf15;
+    --sale: #c91e1e;
+    
+    --empty-basket-text: " Košík je prázdny";
+    --full-shopping-basket-text: "nákupný košík";
+    --choose-delivery-method-text: "Výber spôsobu doručenia";
+    --choose-payment-method-text: "Výber spôsobu platby";
+    --free-price-text: "Zadarmo";
+    --continue-without-login-text: "Pokračovanie bez prihlásenia";
+    --summary-order-text: "Súhrn vašej objednávky";
+    --cart-contents-text: "Váš košík";
+    --in-login-text: "Prihlásenie";
+    --in-registration-text: "Nová registrácia";
+    --in-forgotten-pass-text: "";
+    --price-list-filter-text: "Cenník";
+    --search-see-everything-text: "Vidieť všetko";
+    --discount-code-text: "Mám zľavový kód";
+    --searched-cats-text: "Vyhľadávané kategórie";
+    --back-to-eshop-text: "Späť do e-shopu";
+    --to-category-menu-text: "Do kategórie";
+    --back-menu-text: "Späť";
+    --pagination-next-text: "Ďalšie";
+    --pagination-previous-text: "Predchádzajúci";
+    --cookies-files-text: "Súbory cookie";
+    --newsletter-button-text: "Odoberať";
+    --newsletter-be-up-to-date-text: "Buďte v obraze";
+    --specify-params-text: "Vybrať parametre";
+    --article-tags-text: "Tagy článku";
+    --watch-product-text: "Sledovať produkt";
+    --notfull-shopping-text: "Nákupný";
+    --notfull-basket-is-empty-text: " Košík je prázdny";
+    --whole-blog-article-text: "Celý článok";
+    --basket-content-text: " Obsah košíka";
+    --products-in-cat-text: " Produkty v kategórii";
+    
+}
+</style>
+      <link rel="stylesheet"
+            type="text/css"
+            id="tpl-editor-stylesheet"
+            href="/sablony/nove/titanium/titaniumpurple/css/colors.css?_=2023-03-28-09-41"
+            media="screen">
+
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" 
+               type="text/css" 
+               href="https://static.bohemiasoft.com/custom-css/titanium.css?_1678690169" 
+               media="screen"><style type="text/css">
+           <!--#site_logo{
+              width: 275px;
+              height: 100px;
+              background-image: url('/sablony/nove/titanium/titaniumpurple/images/logo.png?cache_time=1679579740');
+              background-repeat: no-repeat;
+              
+            }html body .myheader { 
+      background-image: none;
+      border: black;
+      background-repeat: repeat;
+      background-position: 0px 0px;
+      background-color: #ffffff;
+    }#page_background{
+              background-image: none;
+              background-repeat: repeat;
+              background-position: 0px 0px;
+              background-color: #ffffff;
+            }.bgLupa{
+              padding: 0;
+              border: none;
+            }
+
+:root { 
+}
+-->
+            </style>          <link rel="stylesheet" type="text/css" href="/fotky12085/design_setup/css/user_defined.css?_=1680848027" media="screen, projection">
+          <script>
+  $(document).ready(function() {
+    if (getCookie('show_cookie_message' + '_12085_sk') != 'no') {
+      if($('#cookies-agreement').attr('data-location') === '0')
+      {
+        $('.cookies-wrapper').css("top", "0px");
+      }
+      else
+      {
+        $('.cookies-wrapper').css("bottom", "0px");
+      }
+      $('.cookies-wrapper').show();
+    }
+
+    $('#cookies-notify__close').click(function() {
+      setCookie('show_cookie_message' + '_12085_sk', 'no');
+      $('#cookies-agreement').slideUp();
+      $("#masterpage").attr("style", "");
+      setCookie('cookie_preferences', 'true');
+      setCookie('cookie_statistics', 'true');
+      setCookie('cookie_marketing', 'true');
+      window.cookie_preferences = true;
+      window.cookie_statistics = true;
+      window.cookie_marketing = true;
+      gtag('consent', 'update', {
+          'ad_storage': 'granted',
+          'analytics_storage': 'granted'
+      });
+      return false;
+    });
+
+    $('#cookies-notify__preferences-button-close').click(function(){
+        setCookie('show_cookie_message' + '_12085_sk', 'no');
+        $('#cookies-agreement').slideUp();
+        $("#masterpage").attr("style", "");
+        var cookies_notify_preferences = $("#cookies-notify-checkbox__preferences").is(':checked');
+        var cookies_notify_statistics = $("#cookies-notify-checkbox__statistics").is(':checked');
+        var cookies_notify_marketing = $("#cookies-notify-checkbox__marketing").is(':checked');
+        setCookie('cookie_preferences', cookies_notify_preferences);
+        setCookie('cookie_statistics', cookies_notify_statistics);
+        setCookie('cookie_marketing', cookies_notify_marketing);
+        window.cookie_preferences = cookies_notify_preferences;
+        window.cookie_statistics = cookies_notify_statistics;
+        window.cookie_marketing = cookies_notify_marketing;
+        if(cookies_notify_marketing)
+        {
+            gtag('consent', 'update', {
+                'ad_storage': 'granted'
+            });
+        }
+        if(cookies_notify_statistics)
+        {
+            gtag('consent', 'update', {
+                'analytics_storage': 'granted'
+            });
+        }
+    });
+
+    /**
+     * @param {String} cookie_name
+     * @returns {String}
+     */
+    function getCookie(cookie_name) {
+      if (document.cookie.length > 0)
+      {
+        cookie_start = document.cookie.indexOf(cookie_name + "=");
+        if (cookie_start != -1)
+        {
+          cookie_start = cookie_start + cookie_name.length + 1;
+          cookie_end = document.cookie.indexOf(";", cookie_start);
+          if (cookie_end == -1)
+          {
+            cookie_end = document.cookie.length;
+          }
+          return unescape(document.cookie.substring(cookie_start, cookie_end));
+        }
+      }
+      return "";
+    }
+    
+    /**
+     * @param {String} cookie_name
+     * @param {String} value
+     */
+    function setCookie(cookie_name, value) {
+      var time = new Date();
+      time.setTime(time.getTime() + 365*24*60*60*1000); // + 1 rok
+      var expires = "expires="+time.toUTCString();
+      document.cookie = cookie_name + "=" + escape(value) + "; " + expires + "; path=/";
+    }
+  });
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-10229227-5"></script><script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+</script><script>
+           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+           })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+           ga('create', 'UA-10229227-5', 'auto');
+           ga('require','displayfeatures');ga('require', 'ec');
+            </script><script type="text/javascript" src="/wa_script/js/ga_enhanced_helper.js"></script>        <script type="text/javascript" src="/wa_script/js/search_autocompleter.js?_=2023-03-28-09-41"></script>
+          <script>
+          WA.Translation._complete_specification = " ";
+          WA.Translation._dont_have_acc = "Nemáte účet? ";
+          WA.Translation._have_acc = "Máte už účet? ";
+          WA.Translation._register_titanium = "Zaregistrovať sa";
+          WA.Translation._login_titanium = "Prihlásiť";
+          WA.Translation._placeholder_voucher = "Sem vložte kód";
+      </script>
+            <script src="/wa_script/js/template/titanium/script.js?_=2023-03-28-09-41"></script>
+                <link rel="stylesheet" type="text/css" href="/assets/vendor/magnific-popup/magnific-popup.css" />
+  <script src="/assets/vendor/magnific-popup/jquery.magnific-popup.js"></script>
+  <script type="text/javascript">
+    BS.env = {
+      decPoint: ",",
+      basketFloatEnabled: false        };
+  </script>
+  <script type="text/javascript" src="/node_modules/select2/dist/js/select2.min.js"></script>
+  <script type="text/javascript" src="/node_modules/maximize-select2-height/maximize-select2-height.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+      $.fn.select2.defaults.set("language", {
+        noResults: function() {return " Žiadny záznam nebol nájdený"},
+        inputTooShort: function(o) {
+          var n = o.minimum - o.input.length;
+          return "_input_too_short".replace("#N#", n);
+        }
+      });
+      $.fn.select2.defaults.set("width", "100%")
+    })();
+
+  </script>
+  <link type="text/css" rel="stylesheet" href="/node_modules/select2/dist/css/select2.min.css" />
+  <script type="text/javascript" src="/wa_script/js/app.js?_=2023-03-28-09-41"></script>
+  <script type="text/javascript" src="/node_modules/jquery-validation/dist/jquery.validate.min.js"></script>
+
+      </head>
+      <script type="text/javascript">
+    var fb_pixel = 'active';
+  </script>
+  <script type="text/javascript" src="/wa_script/js/fb_pixel_func.js"></script>
+  
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+            n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+            document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+        fbq('init', '303316813387486');
+        fbq('track', "PageView");</script>
+
+    <noscript><img height="1" width="1" style="display:none"
+                   src="https://www.facebook.com/tr?id=303316813387486&ev=PageView&noscript=1"
+        /></noscript>
+    <!-- End Facebook Pixel Code -->
+
+      <body class="lang-sk layout3 not-home page-product-detail page-product-50660 basket-empty slider_available template-slider-disabled vat-payer-y alternative-currency-n" >
+    <a name="topweb"></a>
+        <div id="cookies-agreement" class="cookies-wrapper" data-location="1"
+     style="background-color: #e4e4e4;
+             opacity: 0.95"
+>
+  <div class="cookies-notify-background"></div>
+  <div class="cookies-notify" style="display:block!important;">
+    <div class="cookies-notify__bar">
+      <div class="cookies-notify__bar1">
+        <div class="cookies-notify__text"
+                              style="color: #000000;"
+                             >
+            S cieľom uľahčiť užívateľom používať naše webové stránky využívame cookies. Používaním našich stránok súhlasíte s ukladaním súborov cookie na vašom počítači / zariadení.            </div>
+        <div class="cookies-notify__button">
+          <a href="#" id="cookies-notify__close"
+             style="color: #ffffff;
+                    background-color: #7bb809;
+                    opacity: 1"
+            >Ok</a>
+        </div>
+      </div>
+                </div>
+  </div>
+</div>
+
+<div id="responsive_layout_large"></div><div id="page">      <div class="top-bar" id="topBar">
+              <div class="top-bar-content">
+        <div class="discount">
+<p>DNES | Maľované obrazy -17% ZĽAVA | <a href="/Anjelske-obrazy-krasne-motivy">Viac</a></p>
+</div>
+<section class="sk-section__menu">
+<div class="sk-container"><!-- Burger -->
+<div class="sk-burger" onclick="burgerExpand()"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 18 18" fill="none"> <path d="M1 15.1905H17M1 9.09524H17M1 3H17" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </svg></div>
+<!-- Menu -->
+<div class="sk-menu"><!-- Menu item --> <!-- To add a new category, for exmaple, Black Friday, add it as a new menu__item --> <!-- Menu item -->
+<div class="sk-menu__item"><!-- Wrapper for possible image/icon added -->
+<div class="sk-menu__item-wrapper"><a class="sk-menu__item-link" href="/novinky-moderne-byvanie">Novinky</a></div>
+</div>
+<!-- Menu item -->
+<div class="sk-menu__item sk-menu__item0" onclick="itemFotky0()"><!-- Wrapper for possible image added-->
+<div class="sk-menu__item-wrapper"><a class="sk-menu__item-link sk-menu__item-link-disable" href="/fotoplatno">Z fotky</a> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewbox="0 0 12 7" fill="none"> <path d="M5.9998 6.9748C5.86647 6.9748 5.73747 6.9498 5.6128 6.8998C5.48747 6.8498 5.38314 6.78314 5.2998 6.6998L0.699804 2.0998C0.516471 1.91647 0.424805 1.68314 0.424805 1.3998C0.424805 1.11647 0.516471 0.883138 0.699804 0.699804C0.883138 0.516471 1.11647 0.424805 1.3998 0.424805C1.68314 0.424805 1.91647 0.516471 2.0998 0.699804L5.9998 4.5998L9.8998 0.699804C10.0831 0.516471 10.3165 0.424805 10.5998 0.424805C10.8831 0.424805 11.1165 0.516471 11.2998 0.699804C11.4831 0.883138 11.5748 1.11647 11.5748 1.3998C11.5748 1.68314 11.4831 1.91647 11.2998 2.0998L6.6998 6.6998C6.5998 6.7998 6.49147 6.87047 6.3748 6.9118C6.25814 6.9538 6.13314 6.9748 5.9998 6.9748Z" fill="#333333"></path> </svg></div>
+<!-- Dropdown -->
+<div class="sk-dropdown">
+<div class="sk-dropdown__info"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewbox="0 0 17 17" fill="none"> <path d="M16 16L1 1M16 1L1 16" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </svg></div>
+<div class="sk-dropdown__wrapper"><a class="sk-dropdown__item" href="/fotoplatno"> <img src="/fotky12085/ons_new/1.jpg" alt="img" /> Obrazy z vlastnej fotky </a> <a class="sk-dropdown__item" href="/Obraz-pre-muzov-portret-general-super-darcek"> <img src="/fotky12085/ons_new/2.png" alt="img" /> Obraz generál </a> <a class="sk-dropdown__item" href="/darcek-pre-zeny-historicky-obraz-z-fotky"> <img src="/fotky12085/ons_new/3.png" alt="img" /> Obraz z fotky kráľovná </a> <a class="sk-dropdown__item" href="/obraznastenu/search-engine.htm?slovo=XOBFOTO-ANI&amp;search_submit=&amp;hledatjak=2"> <img src="/fotky12085/ons_new/4.png" alt="img" /> Zvierací generál </a> <a class="sk-dropdown__item" href="/malovanie-podla-cisel-z-vlastnej-fotky-OBDLZNIK?iec=intelimail_per&amp;iea=intelimail_per_click&amp;iel=intelimail_per_click_top_sales"> <img src="/fotky12085/ons_new/5.png" alt="img" /> Maľovanie podľa čísel z fotky </a> <a class="sk-dropdown__item" href="/obraznastenu/search-engine.htm?slovo=XOBFOTO-DJ&amp;search_submit=&amp;hledatjak=2"> <img src="/fotky12085/ons_new/6.png" alt="img" /> WPAP z fotografie </a> <a class="sk-dropdown__item" href="/obraznastenu/search-engine.htm?slovo=XVA&amp;search_submit=&amp;hledatjak=2"> <img src="/fotky12085/ons_new/7.png" alt="img" /> Poukazy </a></div>
+</div>
+</div>
+<!-- Menu item -->
+<div class="sk-menu__item sk-menu__item1" onclick="itemFotky1()"><!-- Wrapper for possible image added-->
+<div class="sk-menu__item-wrapper"><a class="sk-menu__item-link sk-menu__item-link-disable" href="/moderne-obrazy-na-platne-1">Obrazy na plátne</a><svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewbox="0 0 12 7" fill="none"> <path d="M5.9998 6.9748C5.86647 6.9748 5.73747 6.9498 5.6128 6.8998C5.48747 6.8498 5.38314 6.78314 5.2998 6.6998L0.699804 2.0998C0.516471 1.91647 0.424805 1.68314 0.424805 1.3998C0.424805 1.11647 0.516471 0.883138 0.699804 0.699804C0.883138 0.516471 1.11647 0.424805 1.3998 0.424805C1.68314 0.424805 1.91647 0.516471 2.0998 0.699804L5.9998 4.5998L9.8998 0.699804C10.0831 0.516471 10.3165 0.424805 10.5998 0.424805C10.8831 0.424805 11.1165 0.516471 11.2998 0.699804C11.4831 0.883138 11.5748 1.11647 11.5748 1.3998C11.5748 1.68314 11.4831 1.91647 11.2998 2.0998L6.6998 6.6998C6.5998 6.7998 6.49147 6.87047 6.3748 6.9118C6.25814 6.9538 6.13314 6.9748 5.9998 6.9748Z" fill="#333333"></path> </svg></div>
+<!-- Dropdown -->
+<div class="sk-dropdown">
+<div class="sk-dropdown__info"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewbox="0 0 17 17" fill="none"> <path d="M16 16L1 1M16 1L1 16" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </svg></div>
+<div class="sk-dropdown__wrapper"><a class="sk-dropdown__item" href="/Moderne-obrazy-na-stenu-inspiruj-sa-nasimi-dizajnmi"> <img src="/fotky12085/fotos/obraz-na-platne-XOBCHAB046.jpg" alt="img" /> Moderné dizajny </a> <a class="sk-dropdown__item" href="/Rodinne-obrazy-na-stenu-pre-harmonicky-domov"> <img src="/fotky12085/fotos/obraz-na-platne-XOBFB599E1.jpg" alt="img" /> Rodinná harmónia </a> <a class="sk-dropdown__item" href="/Prirodne-obrazy-na-stenu"> <img src="/fotky12085/fotos/obraz-na-stenu_XOBST021E11-gal.jpg" alt="img" /> Prírodná krása </a> <a class="sk-dropdown__item" href="/premium-art-obrazy-originalne-motivy"> <img src="/fotky12085/ons_new/menu/premium-obrazy-menu.jpg" alt="img" /> PREMIUM ART </a> <a class="sk-dropdown__item" href="/Duchovne-obrazy-na-stenu-pre-vnutorny-pokoj"> <img src="/fotky12085/fotos/obraz-na-platne-XOBFB564E1.jpg" alt="img" /> Duchovné motívy </a> <a class="sk-dropdown__item" href="/Vesele-obrazy-na-stenu"> <img src="/fotky12085/fotos/obraz-na-platne-XOBMCSET002.jpg" alt="img" /> Veselé obrazy </a> <a class="sk-dropdown__item" href="/Umelecka-inspiracia-obrazy-pre-tvorive-duse"> <img src="/fotky12085/ons_new/menu/umelecka-inspiracia-menu.jpg" alt="img" /> Umelecká inšpirácia </a> <a class="sk-dropdown__item" href="/Viacdielne-obrazy-na-stenu-najkrajsie-dizajny-pre-vas-interier"> <img src="/fotky12085/fotos/obraz-na-stenu_XOBKU041E30-gal.jpg" alt="img" /> Viacdielne obrazy </a></div>
+</div>
+</div>
+<!-- Menu item -->
+<div class="sk-menu__item sk-menu__item2" onclick="itemFotky2()"><!-- Wrapper for possible image added-->
+<div class="sk-menu__item-wrapper"><a class="sk-menu__item-link sk-menu__item-link-disable" href="/rucne-malovane-obrazy-na-stenu">Maľované</a><svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewbox="0 0 12 7" fill="none"> <path d="M5.9998 6.9748C5.86647 6.9748 5.73747 6.9498 5.6128 6.8998C5.48747 6.8498 5.38314 6.78314 5.2998 6.6998L0.699804 2.0998C0.516471 1.91647 0.424805 1.68314 0.424805 1.3998C0.424805 1.11647 0.516471 0.883138 0.699804 0.699804C0.883138 0.516471 1.11647 0.424805 1.3998 0.424805C1.68314 0.424805 1.91647 0.516471 2.0998 0.699804L5.9998 4.5998L9.8998 0.699804C10.0831 0.516471 10.3165 0.424805 10.5998 0.424805C10.8831 0.424805 11.1165 0.516471 11.2998 0.699804C11.4831 0.883138 11.5748 1.11647 11.5748 1.3998C11.5748 1.68314 11.4831 1.91647 11.2998 2.0998L6.6998 6.6998C6.5998 6.7998 6.49147 6.87047 6.3748 6.9118C6.25814 6.9538 6.13314 6.9748 5.9998 6.9748Z" fill="#333333"></path> </svg></div>
+<!-- Dropdown -->
+<div class="sk-dropdown">
+<div class="sk-dropdown__info"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewbox="0 0 17 17" fill="none"> <path d="M16 16L1 1M16 1L1 16" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </svg></div>
+<div class="sk-dropdown__wrapper"><a class="sk-dropdown__item" href="/malovane-obrazy-kvety"> <img src="/fotky12085/ons_new/menu/kvety-menu.png" alt="img" /> Kvety </a> <a class="sk-dropdown__item" href="/malovane-obrazy-krajinky"> <img src="/fotky12085/ons_new/menu/krajinky-menu.png" alt="img" /> Krajinky </a> <a class="sk-dropdown__item" href="/obrazy-stromov"> <img src="/fotky12085/ons_new/menu/stromy-menu.png" alt="img" /> Stromy </a> <a class="sk-dropdown__item" href="/abstraktne-obrazy-moderne-obrazy-na-stenu"> <img src="/fotky12085/ons_new/menu/abstrakt-menu.png" alt="img" /> Abstrakty </a> <a class="sk-dropdown__item" href="/obrazy-mesta-malovane-obrazy"> <img src="/fotky12085/ons_new/menu/mesta-menu.png" alt="img" /> Mesto </a> <a class="sk-dropdown__item" href="/obrazy-zeny"> <img src="/fotky12085/ons_new/menu/zena-menu.png" alt="img" /> Žena </a> <a class="sk-dropdown__item" href="/malovane-obrazy-pre-inspiraciu"> <img src="/fotky12085/ons_new/menu/inspiracia-menu.png" alt="img" /> Inšpirácia </a></div>
+</div>
+</div>
+<!-- Menu item -->
+<div class="sk-menu__item sk-menu__item3" onclick="itemFotky3()"><!-- Wrapper for possible image added-->
+<div class="sk-menu__item-wrapper"><a class="sk-menu__item-link sk-menu__item-link-disable" href="/rucne-malovane-obrazy-na-stenu">Maľovanie podľa čísel</a><svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewbox="0 0 12 7" fill="none"> <path d="M5.9998 6.9748C5.86647 6.9748 5.73747 6.9498 5.6128 6.8998C5.48747 6.8498 5.38314 6.78314 5.2998 6.6998L0.699804 2.0998C0.516471 1.91647 0.424805 1.68314 0.424805 1.3998C0.424805 1.11647 0.516471 0.883138 0.699804 0.699804C0.883138 0.516471 1.11647 0.424805 1.3998 0.424805C1.68314 0.424805 1.91647 0.516471 2.0998 0.699804L5.9998 4.5998L9.8998 0.699804C10.0831 0.516471 10.3165 0.424805 10.5998 0.424805C10.8831 0.424805 11.1165 0.516471 11.2998 0.699804C11.4831 0.883138 11.5748 1.11647 11.5748 1.3998C11.5748 1.68314 11.4831 1.91647 11.2998 2.0998L6.6998 6.6998C6.5998 6.7998 6.49147 6.87047 6.3748 6.9118C6.25814 6.9538 6.13314 6.9748 5.9998 6.9748Z" fill="#333333"></path> </svg></div>
+<!-- Dropdown -->
+<div class="sk-dropdown">
+<div class="sk-dropdown__info"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewbox="0 0 17 17" fill="none"> <path d="M16 16L1 1M16 1L1 16" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </svg></div>
+<div class="sk-dropdown__wrapper"><a class="sk-dropdown__item" href="/Malovanie-podla-cisel-pre-dospelych"> <img src="https://www.artmie.sk/fotky6652/artmie_new/kategoria-malovanie-podla-cisel-pre-pokrocilych-artmie.jpg" alt="img" /> Pre dospelých </a> <a class="sk-dropdown__item" href="/Malovanie-podla-cisel-pre-deti"> <img src="https://www.artmie.sk/fotky6652/artmie_new/kategoria-malovanie-podla-cisel-deti-artmie.jpg" alt="img" /> Pre deti </a> <a class="sk-dropdown__item" href="/Malovanie-podla-cisel-premium-gold"> <img src="https://www.artmie.sk/fotky6652/artmie_new/kategoria-malovanie-podla-cisel-premium-gold-artmie.jpg" alt="img" /> So zlatými plátkami </a></div>
+</div>
+</div>
+<!-- Menu item -->
+<div class="sk-menu__item sk-menu__item4" onclick="itemFotky4()"><!-- Wrapper for possible image added-->
+<div class="sk-menu__item-wrapper"><a class="sk-menu__item-link sk-menu__item-link-disable" href="/rucne-malovane-obrazy-na-stenu">Dekorácie a textil</a><svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewbox="0 0 12 7" fill="none"> <path d="M5.9998 6.9748C5.86647 6.9748 5.73747 6.9498 5.6128 6.8998C5.48747 6.8498 5.38314 6.78314 5.2998 6.6998L0.699804 2.0998C0.516471 1.91647 0.424805 1.68314 0.424805 1.3998C0.424805 1.11647 0.516471 0.883138 0.699804 0.699804C0.883138 0.516471 1.11647 0.424805 1.3998 0.424805C1.68314 0.424805 1.91647 0.516471 2.0998 0.699804L5.9998 4.5998L9.8998 0.699804C10.0831 0.516471 10.3165 0.424805 10.5998 0.424805C10.8831 0.424805 11.1165 0.516471 11.2998 0.699804C11.4831 0.883138 11.5748 1.11647 11.5748 1.3998C11.5748 1.68314 11.4831 1.91647 11.2998 2.0998L6.6998 6.6998C6.5998 6.7998 6.49147 6.87047 6.3748 6.9118C6.25814 6.9538 6.13314 6.9748 5.9998 6.9748Z" fill="#333333"></path> </svg></div>
+<!-- Dropdown -->
+<div class="sk-dropdown">
+<div class="sk-dropdown__info"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewbox="0 0 17 17" fill="none"> <path d="M16 16L1 1M16 1L1 16" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </svg></div>
+<div class="sk-dropdown__wrapper"><a class="sk-dropdown__item" href="/nastenne-hodiny-1"> <img src="/fotky12085/fotos/moderne-nastenne-hodiny_HMCNH056-black.jpg" alt="img" /> Nástenné hodiny </a> <a class="sk-dropdown__item" href="/zavesne-platno-na-stenu-1"> <img src="/fotky12085/ons_new/menu/zavesne-platno.jpg" alt="img" /> Závesné plátna </a> <a class="sk-dropdown__item" href="/plagaty-na-stenu-1"> <img src="/fotky12085/ons_new/menu/plagaty.jpg" alt="img" /> Plagáty </a> <a class="sk-dropdown__item" href="/fototapety-na-stenu-1"> <img src="/fotky12085/ons_new/menu/tapety.jpg" alt="img" /> Tapety na stenu </a> <a class="sk-dropdown__item" href="/nalepky-na-stenu-1"> <img src="/fotky12085/ons_new/menu/nalepky.jpg" alt="img" /> Nálepky na stenu </a> <a class="sk-dropdown__item" href="/bytovy-textil-1"> <img src="/fotky12085/ons_new/menu/prehozy.jpg" alt="img" /> Bytový textil </a></div>
+</div>
+</div>
+<!-- Menu item -->
+<div class="sk-menu__item green"><!-- Wrapper for possible image/icon added -->
+<div class="sk-menu__item-wrapper"><a class="sk-menu__item-link" href="/vypredaj">ZĽAVY %</a></div>
+</div>
+<div class="sk-menu__auth">
+<div class="sk-menu__login"><a href="/obraznastenu/e-login">Prihlásenie</a></div>
+<div class="sk-menu__register"><a href="/obraznastenu/e-register">Nová registrácia</a></div>
+</div>
+</div>
+<div class="sk-menu-backdrop" onclick="burgerExpand()"></div>
+</div>
+</section>
+<script>// <![CDATA[
+const burger = document.querySelector(".sk-burger"),
+menu = document.querySelector(".sk-menu"),
+menuBackdrop = document.querySelector(".sk-menu-backdrop"),
+item0 = document.querySelector(".sk-menu__item0"),
+item1 = document.querySelector(".sk-menu__item1"),
+item2 = document.querySelector(".sk-menu__item2"),
+item3 = document.querySelector(".sk-menu__item3"),
+item4 = document.querySelector(".sk-menu__item4");
+function burgerExpand() {
+burger.classList.contains("active")
+  ? (burger.classList.remove("active"),
+    menu.classList.remove("active"),
+    menuBackdrop.classList.remove("active"),
+    item1.classList.remove("active"),
+    item2.classList.remove("active"),
+    item3.classList.remove("active"),
+    item4.classList.remove("active"))
+  : (burger.classList.add("active"), menu.classList.add("active"), menuBackdrop.classList.add("active"));
+}
+function itemFotky0() {
+item0.classList.contains("active") ? item0.classList.remove("active") : item0.classList.add("active");
+}
+function itemFotky1() {
+item1.classList.contains("active") ? item1.classList.remove("active") : item1.classList.add("active");
+}
+function itemFotky2() {
+item2.classList.contains("active") ? item2.classList.remove("active") : item2.classList.add("active");
+}
+function itemFotky3() {
+item3.classList.contains("active") ? item3.classList.remove("active") : item3.classList.add("active");
+}
+function itemFotky4() {
+item4.classList.contains("active") ? item4.classList.remove("active") : item4.classList.add("active");
+}
+// ]]></script>          </div>
+                <div class="top-bar-login">
+                      <span class="user-login"><a href="/obraznastenu/e-login">Prihlásenie</a></span>
+          <span class="user-register"><a href="/obraznastenu/e-register">Nová registrácia</a></span>
+                    </div>
+                    </div>
+      <script type="text/javascript">
+  var responsive_articlemenu_name = ' Menu';
+  var responsive_eshopmenu_name = ' E-shop';
+</script>
+    <link rel="stylesheet" type="text/css" href="/css/masterslider.css?_=2023-03-28-09-41" media="screen, projection">
+<script type="text/javascript" src="/js/masterslider.min.js"></script>
+<div class="myheader">
+            <div class="navigate_bar">
+        <div class="logo-wrapper">
+        <a id="site_logo" href="//www.obraznastenu.sk" class="mylogo"></a>
+</div>
+            <div id="search">
+  <form name="search" id="searchForm" action="/obraznastenu/search-engine.htm" method="GET" enctype="multipart/form-data">
+    <label for="q" class="title_left2"> Hľadanie</label>
+    <p>
+      <input name="slovo" type="text" class="inputBox" id="q" placeholder=" Zadajte text vyhľadávania" maxlength="50">
+      
+      <input type="hidden" id="source_service" value="www.webareal.sk">
+    </p>
+    <div class="wrapper_search_submit">
+      <input type="submit" class="search_submit" name="search_submit" value="">
+    </div>
+    <div id="search_setup_area">
+      <input id="hledatjak2" checked="checked" type="radio" name="hledatjak" value="2">
+      <label for="hledatjak2">Hľadať v tovare</label>
+      <br />
+      <input id="hledatjak1"  type="radio" name="hledatjak" value="1">
+      <label for="hledatjak1">Hľadať v článkoch</label>
+                <script type="text/javascript">
+        function resolve_search_mode_visibility()
+        {
+          if (jQuery('form[name=search] input').is(':focus'))
+          {
+            if (jQuery('#search_setup_area').is(':hidden'))
+            {
+              jQuery('#search_setup_area').slideDown(400);
+            }
+          }
+          else
+          {
+            if (jQuery('#search_setup_area').not(':hidden'))
+            {
+              jQuery('#search_setup_area').slideUp(400);
+            }
+          }
+        }
+
+        $('form[name=search] input').click(function() {
+          this.focus();
+        });
+
+        jQuery('form[name=search] input')
+            .focus(function() {
+              resolve_search_mode_visibility();
+            })
+            .blur(function() {
+              setTimeout(function() {
+                resolve_search_mode_visibility();
+              }, 1000);
+            });
+
+      </script>
+              </div>
+  </form>
+</div>
+        
+<div id="ebar" class="" >        <div id="basket_icon" >
+        <div id="basket_detail">
+            <div id="basket_arrow_tag"></div>
+            <div id="basket_content_tag">
+                <a id="quantity_tag" href="/obraznastenu/e-basket" rel="nofollow" class="elink"><span class="quantity_count">0</span>
+                <span class="basket_empty"> Váš nákupný košík <span class="bold">je prázdny</span></span></a>                </div>
+        </div>
+    </div>
+            </div>      </div>
+      </div>
+    <div class="eshop-menu drop-menu" id="dropMenu">
+  <div id="dropMenuWrapper">
+        <div class="menu-wrapper leftmenu" id="menuWrapper">
+      <ul class="root-eshop-menu" id="menuContent">
+          <li class="home-button">
+          <a href="//www.obraznastenu.sk">
+  <i class="fa fa-home" aria-hidden="true"></i>
+</a>
+        </li>
+        <li class="eshop-menu-item item-1 has-submenu">
+        <a class="item-link level-1" href="/obraznastenu/eshop/34-1-VYPREDAJ">VÝPREDAJ %</a>
+      <ul class="eshop-submenu-root menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/34-1-VYPREDAJ/301-2-Obrazy-do-60">Obrazy do -60%</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/34-1-VYPREDAJ/300-2-Malovane-50">Maľované -50%</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/34-1-VYPREDAJ/544-2-Textil-Deco">Textil / Deco %</a>
+              </div>
+  </div>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-2">
+        <a class="item-link level-1" href="/obraznastenu/eshop/123-1-Darcek-pre-muza">Darček pre muža %</a>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <a class="item-link level-1" href="/obraznastenu/eshop/92-1-Najpredavanejsie-obrazy">Najpredávanejšie obrazy</a>
+      </li>
+    <li class="eshop-menu-item item-4 item-active">
+        <a class="item-link level-1" href="/obraznastenu/eshop/127-1-PREMIUM-ART">PREMIUM ART ♥</a>
+      </li>
+    <li class="eshop-menu-item item-5">
+        <a class="item-link level-1" href="/obraznastenu/eshop/107-1-Obrazy-vo-farbach-25">Obrazy vo farbách -25%</a>
+      </li>
+    <li class="eshop-menu-item item-6 has-submenu">
+        <a class="item-link level-1" href="/obraznastenu/eshop/106-1-Kolekcia-obrazov-LIPA">Kolekcia obrazov LIPA</a>
+      <ul class="eshop-submenu-root menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/106-1-Kolekcia-obrazov-LIPA/555-2-Abstrakty">Abstrakty</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/106-1-Kolekcia-obrazov-LIPA/556-2-Anjel">Anjel</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/106-1-Kolekcia-obrazov-LIPA/557-2-Krajina">Krajina</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/106-1-Kolekcia-obrazov-LIPA/558-2-Kvety">Kvety</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-5">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/106-1-Kolekcia-obrazov-LIPA/559-2-Lode-a-plachetnice">Lode a plachetnice</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-6">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/106-1-Kolekcia-obrazov-LIPA/560-2-Mesto">Mesto</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-7">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/106-1-Kolekcia-obrazov-LIPA/561-2-Priroda">Príroda</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-8">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/106-1-Kolekcia-obrazov-LIPA/562-2-Stromy">Stromy</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-9">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/106-1-Kolekcia-obrazov-LIPA/563-2-Zeny">Ženy</a>
+              </div>
+  </div>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-7">
+        <a class="item-link level-1" href="/obraznastenu/eshop/17-1-Obrazy-z-fotografie">Obrazy z fotografie</a>
+      </li>
+    <li class="eshop-menu-item item-8 has-submenu">
+        <a class="item-link level-1" href="/obraznastenu/eshop/120-1-Malovanie-podla-cisel">Maľovanie podľa čísel</a>
+      <ul class="eshop-submenu-root menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/120-1-Malovanie-podla-cisel/565-2-pre-dospelych">pre dospelých</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/120-1-Malovanie-podla-cisel/566-2-pre-deti">pre deti</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/120-1-Malovanie-podla-cisel/564-2-so-zlatymi-platkami">so zlatými plátkami</a>
+              </div>
+  </div>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-9 has-submenu">
+        <a class="item-link level-1" href="/obraznastenu/eshop/20-1-Malovane-obrazy">Maľované obrazy</a>
+      <ul class="eshop-submenu-root menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/20-1-Malovane-obrazy/172-2-NOVINKY">NOVINKY</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/20-1-Malovane-obrazy/554-2-Najnovsie-TRENDY">Najnovšie TRENDY</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/20-1-Malovane-obrazy/168-2-Abstraktne-obrazy">Abstraktné obrazy</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/20-1-Malovane-obrazy/169-2-Malovane-kvety">Maľované kvety</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-5">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/20-1-Malovane-obrazy/170-2-Obrazy-mesta">Obrazy mesta</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-6">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/20-1-Malovane-obrazy/171-2-Obrazy-krajiny">Obrazy krajiny</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-7">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/20-1-Malovane-obrazy/173-2-Obrazy-stromy">Obrazy stromy</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-8">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/20-1-Malovane-obrazy/174-2-Obrazy-lasky">Obrazy lásky</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-9">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/20-1-Malovane-obrazy/176-2-Obrazy-zeny">Obrazy ženy</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-10">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/20-1-Malovane-obrazy/177-2-Obrazy-pre-inspiraciu">Obrazy pre inšpiráciu</a>
+              </div>
+  </div>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-10">
+        <a class="item-link level-1" href="/obraznastenu/eshop/101-1-Nove-trendy-obrazy">Nové trendy obrazy</a>
+      </li>
+    <li class="eshop-menu-item item-11 has-submenu">
+        <a class="item-link level-1" href="/obraznastenu/eshop/98-1-Styly-byvania">Štýly bývania</a>
+      <ul class="eshop-submenu-root menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/98-1-Styly-byvania/533-2-Vidiecky-styl-byvania">Vidiecky štýl bývania</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/98-1-Styly-byvania/534-2-Stredomorsky-styl-byvania">Stredomorský štýl bývania</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/98-1-Styly-byvania/535-2-Skandinavsky-styl-byvania">Škandinávsky štýl bývania </a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/98-1-Styly-byvania/541-2-Romance-styl-byvania">Romance štýl bývania</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-5">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/98-1-Styly-byvania/536-2-Industrialny-styl-byvania">Industriálny štýl bývania</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-6">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/98-1-Styly-byvania/537-2-Pop-Art-styl-byvania">Pop Art štýl bývania</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-7">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/98-1-Styly-byvania/538-2-Etno-Boho-styl-byvania">Etno / Boho štýl bývania</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-8">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/98-1-Styly-byvania/539-2-Gurmansky-styl-byvania">Gurmánsky štýl bývania</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-9">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/98-1-Styly-byvania/540-2-Styl-pre-deti">Štýl pre deti</a>
+              </div>
+  </div>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-12 has-submenu">
+        <a class="item-link level-1" href="/obraznastenu/eshop/57-1-Moderne-byvanie">Moderné bývanie</a>
+      <ul class="eshop-submenu-root menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/57-1-Moderne-byvanie/528-2-Modre-Obrazy">Modré Obrazy</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/57-1-Moderne-byvanie/525-2-Biele-a-cierne-Obrazy">Biele a čierne Obrazy</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/57-1-Moderne-byvanie/531-2-Zelene-Obrazy">Zelené Obrazy</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/57-1-Moderne-byvanie/543-2-Farebne-Obrazy">Farebné Obrazy</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-5">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/57-1-Moderne-byvanie/529-2-Cervene-Obrazy">Červené Obrazy </a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-6">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/57-1-Moderne-byvanie/527-2-Ruzove-a-fialove-obrazy">Ružové a fialové obrazy</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-7">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/57-1-Moderne-byvanie/526-2-Hnede-Obrazy">Hnedé Obrazy</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-8">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/57-1-Moderne-byvanie/542-2-Zlte-a-oranzove-obrazy">Žlté a oranžové obrazy</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-9">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/57-1-Moderne-byvanie/530-2-Sive-Obrazy">Sivé Obrazy</a>
+              </div>
+  </div>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-13 has-submenu">
+        <a class="item-link level-1" href="/obraznastenu/eshop/122-1-Moderne-obrazy">Moderné obrazy</a>
+      <ul class="eshop-submenu-root menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/122-1-Moderne-obrazy/579-2-Moderne-dizajny">Moderné dizajny</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/122-1-Moderne-obrazy/577-2-Rodinna-harmonia">Rodinná harmónia</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/122-1-Moderne-obrazy/578-2-Prirodna-krasa">Prírodná krása</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/122-1-Moderne-obrazy/573-2-PREMIUM-ART">PREMIUM ART</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-5">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/122-1-Moderne-obrazy/575-2-Duchovne-motivy">Duchovné motívy</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-6">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/122-1-Moderne-obrazy/580-2-Vesele-obrazy">Veselé obrazy</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-7">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/122-1-Moderne-obrazy/576-2-Umelecka-inspiracia">Umelecká inšpirácia</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-8">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/122-1-Moderne-obrazy/574-2-Viacdielne">Viacdielne</a>
+              </div>
+  </div>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-14 has-submenu">
+        <a class="item-link level-1" href="/obraznastenu/eshop/90-1-Dan-Johannson">Dan Johannson</a>
+      <ul class="eshop-submenu-root menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/90-1-Dan-Johannson/547-2-Obrazy">Obrazy</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/90-1-Dan-Johannson/549-2-Plagaty">Plagáty</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/90-1-Dan-Johannson/548-2-Tapety">Tapety</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/90-1-Dan-Johannson/551-2-Zavesne-platna">Závesné plátna</a>
+              </div>
+  </div>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-15">
+        <a class="item-link level-1" href="/obraznastenu/eshop/38-1-Tom-Loris">Tom Loris</a>
+      </li>
+    <li class="eshop-menu-item item-16">
+        <a class="item-link level-1" href="/obraznastenu/eshop/71-1-Banksy">Banksy</a>
+      </li>
+    <li class="eshop-menu-item item-17">
+        <a class="item-link level-1" href="/obraznastenu/eshop/58-1-Novinky">Novinky</a>
+      </li>
+    <li class="eshop-menu-item item-18">
+        <a class="item-link level-1" href="/obraznastenu/eshop/100-1-Obrazy-pre-deti">Obrazy pre deti</a>
+      </li>
+    <li class="eshop-menu-item item-19">
+        <a class="item-link level-1" href="/obraznastenu/eshop/99-1-Atelier-LIPA">Ateliér LIPA</a>
+      </li>
+    <li class="eshop-menu-item item-20 has-submenu">
+        <a class="item-link level-1" href="/obraznastenu/eshop/22-1-Pop-Art-obrazy">Pop Art obrazy</a>
+      <ul class="eshop-submenu-root menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/22-1-Pop-Art-obrazy/34-2-Film">Film</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/22-1-Pop-Art-obrazy/35-2-Hudba">Hudba</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/22-1-Pop-Art-obrazy/36-2-Auta">Autá</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/22-1-Pop-Art-obrazy/37-2-Inspiracia">Inšpirácia</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-5">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/22-1-Pop-Art-obrazy/46-2-Mafia">Mafia</a>
+              </div>
+  </div>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-21 has-submenu">
+        <a class="item-link level-1" href="/obraznastenu/eshop/37-1-Reprodukcie">Reprodukcie</a>
+      <ul class="eshop-submenu-root menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/37-1-Reprodukcie/75-2-Alfons-Mucha">Alfons Mucha</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/37-1-Reprodukcie/77-2-Gustav-Klimt">Gustav Klimt</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/37-1-Reprodukcie/78-2-Vincent-van-Gogh">Vincent van Gogh</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/37-1-Reprodukcie/79-2-Claude-Monet">Claude Monet</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-5">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/37-1-Reprodukcie/80-2-Pierre-Auguste-Renoir">Pierre Auguste Renoir</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-6">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/37-1-Reprodukcie/81-2-Tamara-de-Lempicka">Tamara de Lempicka</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-7">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/37-1-Reprodukcie/150-2-Leonardo-da-Vinci">Leonardo da Vinci</a>
+              </div>
+  </div>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-22">
+        <a class="item-link level-1" href="/obraznastenu/eshop/104-1-Foto-kolaze">Foto koláže</a>
+      </li>
+    <li class="eshop-menu-item item-23 has-submenu">
+        <a class="item-link level-1" href="/obraznastenu/eshop/80-1-Kuchyna">Kuchyňa</a>
+      <ul class="eshop-submenu-root menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/80-1-Kuchyna/487-2-Kava">Káva</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/80-1-Kuchyna/488-2-Caj">Čaj</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/80-1-Kuchyna/489-2-Cokolada">Čokoláda</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/80-1-Kuchyna/490-2-Korenie">Korenie</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-5">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/80-1-Kuchyna/491-2-Vino">Víno</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-6">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/80-1-Kuchyna/492-2-Ovocie">Ovocie</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-7">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/80-1-Kuchyna/493-2-Kvety-vo-vaze">Kvety vo váze</a>
+              </div>
+  </div>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-24 has-submenu">
+        <a class="item-link level-1" href="/obraznastenu/eshop/74-1-Abstrakty">Abstrakty</a>
+      <ul class="eshop-submenu-root menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/74-1-Abstrakty/444-2-Cierno-biele">Čierno-biele</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/74-1-Abstrakty/445-2-Hnede">Hnedé</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/74-1-Abstrakty/446-2-Cervene">Červené</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/74-1-Abstrakty/447-2-Fialove">Fialové</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-5">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/74-1-Abstrakty/448-2-Modre">Modré</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-6">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/74-1-Abstrakty/449-2-Zlte-Oranzove">Žlté / Oranžové</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-7">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/74-1-Abstrakty/450-2-Zelene">Zelené</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-8">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/74-1-Abstrakty/451-2-Ohnive">Ohnivé</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-9">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/74-1-Abstrakty/452-2-Farebne">Farebné</a>
+              </div>
+  </div>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-25 has-submenu">
+        <a class="item-link level-1" href="/obraznastenu/eshop/73-1-Priroda">Príroda</a>
+      <ul class="eshop-submenu-root menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/73-1-Priroda/441-2-Zvierata">Zvieratá                    </a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/73-1-Priroda/442-2-Stromy">Stromy              </a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/73-1-Priroda/443-2-Rastliny">Rastliny               </a>
+              </div>
+  </div>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-26 has-submenu">
+        <a class="item-link level-1" href="/obraznastenu/eshop/75-1-Kvety">Kvety</a>
+      <ul class="eshop-submenu-root menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/75-1-Kvety/453-2-Obrazy-ruze">Obrazy ruže</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/75-1-Kvety/454-2-Obrazy-tulipany">Obrazy tulipány</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/75-1-Kvety/455-2-Biele-kvety">Biele kvety</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/75-1-Kvety/456-2-Cervene-kvety">Červené kvety</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-5">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/75-1-Kvety/457-2-Fialove-a-ruzove-kvety">Fialové a ružové kvety</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-6">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/75-1-Kvety/458-2-Zlte-kvety">Žlté kvety</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-7">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/75-1-Kvety/459-2-Modre-kvety">Modré kvety</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-8">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/75-1-Kvety/460-2-Farebne-kvety">Farebné kvety</a>
+              </div>
+  </div>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-27">
+        <a class="item-link level-1" href="/obraznastenu/eshop/124-1-Motivacne">Motivačné</a>
+      </li>
+    <li class="eshop-menu-item item-28 has-submenu">
+        <a class="item-link level-1" href="/obraznastenu/eshop/76-1-Mesta">Mestá</a>
+      <ul class="eshop-submenu-root menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/76-1-Mesta/461-2-Obrazy-Londyn">Obrazy Londýn</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/76-1-Mesta/462-2-Obrazy-New-York">Obrazy New York</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/76-1-Mesta/463-2-Obrazy-Pariz">Obrazy Paríž</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/76-1-Mesta/464-2-Mapy">Mapy</a>
+              </div>
+  </div>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-29 has-submenu">
+        <a class="item-link level-1" href="/obraznastenu/eshop/78-1-Krajina">Krajina</a>
+      <ul class="eshop-submenu-root menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/78-1-Krajina/473-2-Hory">Hory</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/78-1-Krajina/474-2-Luky">Lúky</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/78-1-Krajina/475-2-Puste">Púšte</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/78-1-Krajina/476-2-Plaze">Pláže</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-5">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/78-1-Krajina/477-2-Vodopady">Vodopády</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-6">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/78-1-Krajina/478-2-Zapad-slnka">Západ slnka</a>
+              </div>
+  </div>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-30 has-submenu">
+        <a class="item-link level-1" href="/obraznastenu/eshop/79-1-Feng-Shui">Feng Shui</a>
+      <ul class="eshop-submenu-root menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/79-1-Feng-Shui/479-2-Voda">Voda</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/79-1-Feng-Shui/480-2-Drevo">Drevo</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/79-1-Feng-Shui/481-2-Ohen">Oheň</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/79-1-Feng-Shui/482-2-Zem">Zem</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-5">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/79-1-Feng-Shui/483-2-Kov">Kov</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-6">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/79-1-Feng-Shui/484-2-Feng-shui-zvierata">Feng shui zvieratá</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-7">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/79-1-Feng-Shui/485-2-Budha">Budha</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-8">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/79-1-Feng-Shui/486-2-Energeticke-obrazy">Energetické obrazy</a>
+              </div>
+  </div>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-31 has-submenu">
+        <a class="item-link level-1" href="/obraznastenu/eshop/66-1-Inspiracia">Inšpirácia</a>
+      <ul class="eshop-submenu-root menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/66-1-Inspiracia/277-2-Umenie">Umenie</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/66-1-Inspiracia/279-2-Moto">Moto</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/66-1-Inspiracia/280-2-Priroda">Príroda</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/66-1-Inspiracia/281-2-Fantazia">Fantázia</a>
+              </div>
+  </div>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-32">
+        <a class="item-link level-1" href="/obraznastenu/eshop/53-1-Slovensko">Slovensko</a>
+      </li>
+    <li class="eshop-menu-item item-33">
+        <a class="item-link level-1" href="/obraznastenu/eshop/51-1-s-Textami">s Textami</a>
+      </li>
+    <li class="eshop-menu-item item-34">
+        <a class="item-link level-1" href="/obraznastenu/eshop/24-1-Poukazy">Poukazy</a>
+      </li>
+    <li class="eshop-menu-item item-35 has-submenu">
+        <a class="item-link level-1" href="/obraznastenu/eshop/46-1-Dekoracie-a-textil">Dekorácie a textil</a>
+      <ul class="eshop-submenu-root menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/46-1-Dekoracie-a-textil/570-2-Nastenne-hodiny">Nástenné hodiny</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/46-1-Dekoracie-a-textil/567-2-Zavesne-platna">Závesné plátna</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/46-1-Dekoracie-a-textil/569-2-Plagaty">Plagáty</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/46-1-Dekoracie-a-textil/568-2-Tapety-na-stenu">Tapety na stenu</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-5">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/46-1-Dekoracie-a-textil/571-2-Nalepky-na-stenu">Nálepky na stenu</a>
+              </div>
+  </div>
+      </li>
+    <li class="eshop-menu-item item-6">
+        <div class="menu-item-box">
+            <div class="menu-item-cat">
+      <a class="item-link level-2" href="/obraznastenu/eshop/46-1-Dekoracie-a-textil/572-2-Bytovy-textil">Bytový textil</a>
+              </div>
+  </div>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-36">
+        <a class="item-link level-1" href="/obraznastenu/eshop/115-1-Zavesne-platna">Závesné plátna</a>
+      </li>
+    <li class="eshop-menu-item item-37">
+        <a class="item-link level-1" href="/obraznastenu/eshop/36-1-Tapety-na-stenu">Tapety na stenu</a>
+      </li>
+    <li class="eshop-menu-item item-38">
+        <a class="item-link level-1" href="/obraznastenu/eshop/111-1-Plagaty">Plagáty</a>
+      </li>
+    <li class="eshop-menu-item item-39">
+        <a class="item-link level-1" href="/obraznastenu/eshop/77-1-Nastenne-hodiny">Nástenné hodiny</a>
+      </li>
+    <li class="eshop-menu-item item-40">
+        <a class="item-link level-1" href="/obraznastenu/eshop/72-1-Nalepky-na-stenu">Nálepky na stenu</a>
+      </li>
+    <li class="eshop-menu-item item-41">
+        <a class="item-link level-1" href="/obraznastenu/eshop/50-1-Bytovy-textil">Bytový textil</a>
+      </li>
+    <li class="eshop-menu-item item-42">
+        <a class="item-link level-1" href="/obraznastenu/eshop/42-1-Stojany-na-obrazy">Stojany na obrazy</a>
+      </li>
+    <li class="eshop-menu-item item-43">
+        <a class="item-link level-1" href="/obraznastenu/eshop/3-1-DIELNE-obrazy">1 DIELNE obrazy</a>
+      </li>
+    <li class="eshop-menu-item item-44">
+        <a class="item-link level-1" href="/obraznastenu/eshop/4-1-3-DIELNE-obrazy">3 DIELNE obrazy</a>
+      </li>
+    <li class="eshop-menu-item item-45">
+        <a class="item-link level-1" href="/obraznastenu/eshop/27-1-4-DIELNE-obrazy">4 DIELNE obrazy</a>
+      </li>
+    <li class="eshop-menu-item item-46">
+        <a class="item-link level-1" href="/obraznastenu/eshop/5-1-5-DIELNE-obrazy">5 DIELNE obrazy</a>
+      </li>
+    </ul>
+    </div>
+      </div>
+</div>
+<script type="text/javascript">
+  (function() {
+    if(window.priorityNav)
+    {
+      var nav = priorityNav.init({
+        mainNavWrapper: "#menuWrapper",
+        mainNav: "#menuContent",
+        breakPoint: 0,
+        throttleDelay: '50',
+        navDropdownLabel: " Ďalšie",
+        navDropdownBreakpointLabel: 'Menu',
+        initClass: 'top-nav',
+        navDropdownClassName: 'nav-dropdown',
+        navDropdownToggleClassName: 'nav-dropdown-toggle'
+     });
+    }
+  })();
+</script>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PTZSKFW"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+          <div id="page_background">      <div class="hack-box"><!-- HACK MIN WIDTH FOR IE 5, 5.5, 6  -->
+              <div id="masterpage" ><!-- MASTER PAGE -->
+          <div id="header">          </div><!-- END HEADER -->
+                <div id="aroundpage"><!-- AROUND PAGE -->
+        
+  <!-- LEFT BOX -->
+  <div id="left-box">
+        <div id="rMenusSrc" style="display: none">
+      <div id="rArticleMenu">
+      <div class="menu-wrapper">
+      <ul class="root-article-menu">
+      <li class="article-menu-item item-1 has-submenu">
+        <a href="https://www.obraznastenu.sk/" target="_self">
+      <span>
+  Produkty &amp;#9207;    </span>
+      </a>
+      <ul class="article-submenu menu-level-2">
+      <li class="article-menu-item item-1 has-submenu">
+        <a href="https://www.obraznastenu.sk/novinky-moderne-byvanie" target="_self">
+      <span>
+  Obrazy    </span>
+      </a>
+      <ul class="article-submenu menu-level-3">
+      <li class="article-menu-item item-1">
+        <a href="https://www.obraznastenu.sk/novinky-moderne-byvanie" target="_self">
+      <span>
+  Obrazy na plátne    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-2">
+        <a href="http://www.obraznastenu.sk/rucne-malovane-obrazy-na-stenu" target="_self">
+      <span>
+  Maľované obrazy    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-3">
+        <a href="http://www.obraznastenu.sk/obrazy-na-stenu-dan-johannson" target="_self">
+      <span>
+  Dan Johannson    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-4">
+        <a href="http://www.obraznastenu.sk/moderne-obrazy-tom-loris" target="_self">
+      <span>
+  Tom Loris    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-5">
+        <a href="/obraznastenu/27-Produkty-9207/29-Zoya-Verdi" target="_blank">
+      <span>
+  Zoya Verdi    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-6">
+        <a href="/obraznastenu/27-Produkty-9207/30-Oliver-Brown" target="_blank">
+      <span>
+  Oliver Brown    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-7">
+        <a href="http://www.obraznastenu.sk/obrazy-banksy-street-art" target="_self">
+      <span>
+  Banksy Street Art    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-8">
+        <a href="http://www.obraznastenu.sk/reprodukcie-na-platne" target="_self">
+      <span>
+  Reprodukcie    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-9">
+        <a href="http://www.obraznastenu.sk/obrazy-s-textami" target="_self">
+      <span>
+  Textové obrazy    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-10">
+        <a href="http://www.obraznastenu.sk/fotoplatno" target="_self">
+      <span>
+  Z fotografie    </span>
+      </a>
+      </li>
+    </ul>
+    </li>
+    <li class="article-menu-item item-2 has-submenu">
+        <a href="http://www.obraznastenu.sk/fototapety-na-stenu" target="_self">
+      <span>
+  Tapety    </span>
+      </a>
+      <ul class="article-submenu menu-level-3">
+      <li class="article-menu-item item-1">
+        <a href="http://www.obraznastenu.sk/obraznastenu/eshop/36-1-FOTOTAPETY-na-stenu/63-2-Fototapety-na-stenu" target="_self">
+      <span>
+  Fototapety    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-2">
+        <a href="http://www.obraznastenu.sk/obraznastenu/search-engine.htm?slovo=XFTZY&search_submit=&hledatjak=2" target="_blank">
+      <span>
+  Zoya Verdi    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-3">
+        <a href="http://www.obraznastenu.sk/detske-fototapety-na-stenu" target="_blank">
+      <span>
+  Color In    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-4">
+        <a href="http://www.obraznastenu.sk/obraznastenu/search-engine.htm?slovo=V106&search_submit=&hledatjak=2" target="_blank">
+      <span>
+  Modern Wall    </span>
+      </a>
+      </li>
+    </ul>
+    </li>
+    <li class="article-menu-item item-3">
+        <a href="https://www.obraznastenu.sk/plagaty-na-stenu" target="_self">
+      <span>
+  Plagáty    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-4">
+        <a href="https://www.obraznastenu.sk/zavesne-platno-na-stenu" target="_blank">
+      <span>
+  Závesné plátno    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-5 has-submenu">
+        <a href="http://www.obraznastenu.sk/nalepky-na-stenu" target="_blank">
+      <span>
+  Nálepky    </span>
+      </a>
+      <ul class="article-submenu menu-level-3">
+      <li class="article-menu-item item-1">
+        <a href="http://www.obraznastenu.sk/nalapky-na-stenu-citaty" target="_blank">
+      <span>
+  Moderné    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-2">
+        <a href="http://www.obraznastenu.sk/nalepky-na-stenu-kvety" target="_self">
+      <span>
+  Pre ženy    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-3">
+        <a href="http://www.obraznastenu.sk/nalepky-na-stenu-pre-muzov" target="_self">
+      <span>
+  Pre mužov    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-4">
+        <a href="http://www.obraznastenu.sk/nalepky-na-stenu-pre-deti" target="_self">
+      <span>
+  Pre deti    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-5">
+        <a href="http://www.obraznastenu.sk/nalepky-na-stenu-luxusne" target="_self">
+      <span>
+  Dekoračné    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-6">
+        <a href="http://www.obraznastenu.sk/nalepky-na-stenu-extremne-sporty" target="_blank">
+      <span>
+  Voľný čas    </span>
+      </a>
+      </li>
+    </ul>
+    </li>
+    <li class="article-menu-item item-6">
+        <a href="http://www.obraznastenu.sk/nastenne-hodiny" target="_self">
+      <span>
+  Hodiny    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-7 has-submenu">
+        <a href="https://www.obraznastenu.cz" target="_self">
+      <span>
+  Bytové dekorácie    </span>
+      </a>
+      <ul class="article-submenu menu-level-3">
+      <li class="article-menu-item item-1">
+        <a href="http://www.obraznastenu.sk/prehozy-na-postel" target="_self">
+      <span>
+  Prehozy na posteľ    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-2">
+        <a href="http://www.obraznastenu.sk/postelne-obliecky" target="_self">
+      <span>
+  Posteľné obliečky    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-3">
+        <a href="http://www.obraznastenu.sk/obliecky-na-vankuse" target="_self">
+      <span>
+  Obliečky na vankúše    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-4">
+        <a href="http://www.obraznastenu.sk/zavesy-a-zaclony" target="_self">
+      <span>
+  Záclony a závesy    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-5">
+        <a href="http://www.obraznastenu.sk/obrusy" target="_self">
+      <span>
+  Obrusy    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-6">
+        <a href="http://www.obraznastenu.sk/obraznastenu/eshop/91-1-/" target="_self">
+      <span>
+  Uteráky a osušky    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-7">
+        <a href="http://www.obraznastenu.sk/luxusne-vazy" target="_self">
+      <span>
+  Vázy    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-8">
+        <a href="http://www.obraznastenu.sk/svietniky-a-lampy" target="_self">
+      <span>
+  Svietniky a lampy    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-9">
+        <a href="http://www.obraznastenu.sk/obraznastenu/eshop/92-1-Keramicke-misy" target="_self">
+      <span>
+  Keramické dekorácie    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-10">
+        <a href="http://www.obraznastenu.sk/obraznastenu/eshop/93-1-Spony-na-zavesy" target="_self">
+      <span>
+  Spony na závesy    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-11">
+        <a href="http://www.obraznastenu.sk/stojany-na-obrazy" target="_self">
+      <span>
+  Stojany na obrazy    </span>
+      </a>
+      </li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    <li class="article-menu-item item-2 has-submenu">
+        <a href="http://www.obraznastenu.sk/styly-byvania" target="_self">
+      <span>
+  Štýly bývania &amp;#9207;    </span>
+      </a>
+      <ul class="article-submenu menu-level-2">
+      <li class="article-menu-item item-1">
+        <a href="http://www.obraznastenu.sk/bianca-styl-byvania" target="_self">
+      <span>
+  Bianca style    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-2">
+        <a href="http://www.obraznastenu.sk/vidiecky-styl-byvania" target="_self">
+      <span>
+  Vidiecky    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-3">
+        <a href="http://www.obraznastenu.sk/stredomorsky-styl-byvania" target="_self">
+      <span>
+  Stredomorský    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-4">
+        <a href="http://www.obraznastenu.sk/romanticky-styl-byvania" target="_self">
+      <span>
+  Romance    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-5">
+        <a href="http://www.obraznastenu.sk/skandinavsky-styl-byvania" target="_self">
+      <span>
+  Škandinávsky    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-6">
+        <a href="http://www.obraznastenu.sk/industrialny-styl-byvania" target="_self">
+      <span>
+  Industrial (Loft)    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-7">
+        <a href="http://www.obraznastenu.sk/pop-art-styl-byvania" target="_self">
+      <span>
+  Pop Art    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-8">
+        <a href="http://www.obraznastenu.sk/etno-boho-styl-byvania" target="_self">
+      <span>
+  Etno / Boho    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-9">
+        <a href="http://www.obraznastenu.sk/gurmansky-styl-byvania" target="_self">
+      <span>
+  Gurmánsky    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-10">
+        <a href="http://www.obraznastenu.sk/styl-byvania-pre-deti" target="_self">
+      <span>
+  Pre deti    </span>
+      </a>
+      </li>
+    </ul>
+    </li>
+    <li class="article-menu-item item-3 has-submenu">
+        <a href="https://www.obraznastenu.sk/dizajneri" target="_self">
+      <span>
+  Dizajnéri &amp;#9207;    </span>
+      </a>
+      <ul class="article-submenu menu-level-2">
+      <li class="article-menu-item item-1">
+        <a href="http://www.obraznastenu.sk/obrazy-na-stenu-dan-johannson" target="_self">
+      <span>
+  Dan Johannson    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-2">
+        <a href="http://www.obraznastenu.sk/moderne-obrazy-tom-loris" target="_self">
+      <span>
+  Tom Loris    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-3">
+        <a href="https://www.obraznastenu.sk/obrazy-na-stenu-zoya-verdi" target="_self">
+      <span>
+  Zoya Verdi    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-4">
+        <a href="https://www.obraznastenu.sk/malovane-obrazy-bianca" target="_self">
+      <span>
+  Bianca Rossi    </span>
+      </a>
+      </li>
+    </ul>
+    </li>
+    <li class="article-menu-item item-4">
+        <a href="http://www.obraznastenu.sk/atelier-lipa" target="_self">
+      <span>
+  Ateliér LIPA    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-5 has-submenu">
+        <a href="http://www.obraznastenu.sk/moderne-byvanie-obraznastenu" target="_self">
+      <span>
+  Podľa farby &amp;#9207;    </span>
+      </a>
+      <ul class="article-submenu menu-level-2">
+      <li class="article-menu-item item-1">
+        <a href="http://www.obraznastenu.sk/slnecne-objatie" target="_self">
+      <span>
+  žltá a oranžová    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-2">
+        <a href="http://www.obraznastenu.sk/ceresnovy-bozk" target="_self">
+      <span>
+  červená    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-3">
+        <a href="http://www.obraznastenu.sk/fialove-pokusenie" target="_self">
+      <span>
+  fialová a ružová    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-4">
+        <a href="http://www.obraznastenu.sk/modre-letne-osviezenie" target="_self">
+      <span>
+  modrá    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-5">
+        <a href="http://www.obraznastenu.sk/50-odtienov-hnedej" target="_self">
+      <span>
+  hnedá a béžová    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-6">
+        <a href="http://www.obraznastenu.sk/moderne-byvanie-black-white" target="_self">
+      <span>
+  čierna a biela    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-7">
+        <a href="http://www.obraznastenu.sk/zelena-harmonia" target="_self">
+      <span>
+  zelená    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-8">
+        <a href="http://www.obraznastenu.sk/farebna-ispiracia" target="_self">
+      <span>
+  Viac farebné    </span>
+      </a>
+      </li>
+    </ul>
+    </li>
+    <li class="article-menu-item item-6">
+        <a href="/predaj-obrazov-online-nase-zaruky" target="_blank">
+      <span>
+  Naše záruky    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-7">
+        <a href="/moznosti-platby-a-dopravy-pre-obrazy-na-stenu" target="_blank">
+      <span>
+  Doprava a metódy platby    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-8 has-submenu">
+        <a href="/predaj-obrazov-faq" target="_blank">
+      <span>
+  Často kladené otázky / FAQ    </span>
+      </a>
+      <ul class="article-submenu menu-level-2">
+      <li class="article-menu-item item-1">
+        <a href="/obraznastenu/6-Casto-kladene-otazky-FAQ/5-Kvalita-sluzieb-a-reklamacie" target="_blank">
+      <span>
+  Kvalita služieb a reklamácie    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-2">
+        <a href="/obraznastenu/6-Casto-kladene-otazky-FAQ/6-Sposob-platby-a-dodanie" target="_blank">
+      <span>
+  Spôsob platby a dodanie    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-3">
+        <a href="/obraznastenu/6-Casto-kladene-otazky-FAQ/7-Vymena-a-vratenie-tovaru" target="_blank">
+      <span>
+  Výmena a vrátenie tovaru    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-4">
+        <a href="/obraznastenu/6-Casto-kladene-otazky-FAQ/8-Obraz-z-fotografie" target="_blank">
+      <span>
+  Obraz z fotografie    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-5">
+        <a href="/obraznastenu/6-Casto-kladene-otazky-FAQ/9-Spolupraca-a-velkoodber" target="_blank">
+      <span>
+  Spolupráca a veľkoodber    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-6">
+        <a href="/obraznastenu/6-Casto-kladene-otazky-FAQ/10-AKCIE-a-Vernostny-program" target="_blank">
+      <span>
+  AKCIE a Vernostný program    </span>
+      </a>
+      </li>
+    </ul>
+    </li>
+    <li class="article-menu-item item-9">
+        <a href="/predaj-obrazov-vernostny-program" target="_blank">
+      <span>
+  Vernostný program    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-10">
+        <a href="/predaj-obrazov-velkoobchod" target="_blank">
+      <span>
+  Veľkoobchod    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-11">
+        <a href="/predaj-obrazov-uzitocne-odkazy" target="_blank">
+      <span>
+  Užítočné odkazy    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-12 has-submenu">
+        <a href="/predaj-obrazov-obchodne-podmienky" target="_blank">
+      <span>
+  Obchodné podmienky    </span>
+      </a>
+      <ul class="article-submenu menu-level-2">
+      <li class="article-menu-item item-1">
+        <a href="/obchodne-podmienky-objednavka" target="_blank">
+      <span>
+  I. Objednávka    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-2">
+        <a href="/obchodne-podmienky-dodacie-lehoty" target="_blank">
+      <span>
+  II. Dodacie lehoty    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-3">
+        <a href="/obchodne-podmienky-ceny-platobne-podmienky" target="_blank">
+      <span>
+  III. Cena, platobné podmienky     </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-4">
+        <a href="/obchodne-podmienky-preprava-tovaru" target="_blank">
+      <span>
+  IV. Preberanie tovaru    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-5">
+        <a href="/obchodne-podmienky-odstupenie-od-zmluvy" target="_blank">
+      <span>
+  V. Odstúpenie od zmluvy    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-6">
+        <a href="/obchodne-podmienky-vratenie-tovaru" target="_blank">
+      <span>
+  VI. Vrátenie tovaru do 30 dní    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-7">
+        <a href="/obchodne-podmienky-vymena-tovaru" target="_blank">
+      <span>
+  VII. Výmena tovaru do 30 dní    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-8">
+        <a href="/reklamacny-poriadok" target="_blank">
+      <span>
+  VIII. Reklamačný poriadok    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-9">
+        <a href="/zaruka-najnizsej-ceny" target="_blank">
+      <span>
+  IX. Záruka najnižšej ceny    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-10">
+        <a href="/obchodne-podmienky-darcekovy-poukaz" target="_blank">
+      <span>
+  X. Darčekový poukaz    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-11">
+        <a href="/obchodne-podmienky-fotoobrazy" target="_blank">
+      <span>
+  XI. Obraz z fotografie    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-12">
+        <a href="/obchodne-podmienky-fototapety" target="_blank">
+      <span>
+  XII. Informácie k fototapetám    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-13">
+        <a href="/obchodne-podmienky-zaverecne-ustanovenia" target="_blank">
+      <span>
+  XIII. Záverečné ustanovenia    </span>
+      </a>
+      </li>
+    </ul>
+    </li>
+    <li class="article-menu-item item-13">
+        <a href="/predaj-obrazov-myhome" target="_blank">
+      <span>
+  O NÁS    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-14">
+        <a href="/obraznastenu/14-KARIERA" target="_blank">
+      <span>
+  KARIERA    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-15">
+        <a href="/predaj-obrazov-kontakt" target="_blank">
+      <span>
+  KONTAKT    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-16">
+        <a href="/obraznastenu/13-Impressum" target="_blank">
+      <span>
+  Impressum    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-17">
+        <a href="/obraznastenu/15-Vasa-SPOKOJNOST" target="_blank">
+      <span>
+  Vaša SPOKOJNOSŤ    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-18">
+        <a href="/obraznastenu/16-Zavolame-Vam" target="_blank">
+      <span>
+  Zavoláme Vám?    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-19">
+        <a href="/moderne-byvanie" target="_blank">
+      <span>
+  Moderné bývanie    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-20">
+        <a href="/reklamacia-vratenie-vymena" target="_blank">
+      <span>
+  Reklamácia / Vrátenie / Výmena    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-21">
+        <a href="/darcek-k-objednavke" target="_blank">
+      <span>
+  Darček k objednávke    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-22">
+        <a href="/adventny-kalendar" target="_blank">
+      <span>
+  Adventný kalendár 2014    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-23">
+        <a href="/tipy-pre-darceky" target="_blank">
+      <span>
+  Tipy pre DARČEKY    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-24">
+        <a href="/ponuka-prace-myhomesro" target="_blank">
+      <span>
+  Ponuka práce - MY HOME, s.r.o.    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-25">
+        <a href="/absolventska-prax" target="_blank">
+      <span>
+  Absolventská prax    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-26">
+        <a href="/obchod-reklama" target="_blank">
+      <span>
+  Obchodná a reklamná spolupráca    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-27">
+        <a href="/telefonicka-objednavka" target="_blank">
+      <span>
+  Telefonická objednávka    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-28">
+        <a href="/obrazy-na-mieru" target="_blank">
+      <span>
+  Obrazy na mieru    </span>
+      </a>
+      </li>
+    <li class="article-menu-item item-29">
+        <a href="//www.obraznastenu.sk/blog" target="_blank">
+      <span>
+  Blog    </span>
+      </a>
+      </li>
+    </ul>
+    </div>
+    </div>
+    <div id="rEshopMenu">
+      <div class="menu-wrapper">
+      <ul class="root-eshop-menu">
+      <li class="eshop-menu-item item-1 has-submenu">
+        <a href="/obraznastenu/eshop/34-1-VYPREDAJ" target="_self">
+      <span>
+  VÝPREDAJ %    </span>
+      </a>
+      <ul class="eshop-submenu menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <a href="/obraznastenu/eshop/34-1-VYPREDAJ/301-2-Obrazy-do-60" target="_self">
+      <span>
+  Obrazy do -60%    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <a href="/obraznastenu/eshop/34-1-VYPREDAJ/300-2-Malovane-50" target="_self">
+      <span>
+  Maľované -50%    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <a href="/obraznastenu/eshop/34-1-VYPREDAJ/544-2-Textil-Deco" target="_self">
+      <span>
+  Textil / Deco %    </span>
+      </a>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-2">
+        <a href="/obraznastenu/eshop/123-1-Darcek-pre-muza" target="_self">
+      <span>
+  Darček pre muža %    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <a href="/obraznastenu/eshop/92-1-Najpredavanejsie-obrazy" target="_self">
+      <span>
+  Najpredávanejšie obrazy    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-4 item-active">
+        <a href="/obraznastenu/eshop/127-1-PREMIUM-ART" target="_self">
+      <span>
+  PREMIUM ART ♥    </span>
+      </a>
+      </li>
+    <li class="category-menu-sep-1">
+      <span>
+  Špeciálne zľavy    </span>
+    </li>
+    <li class="eshop-menu-item item-5">
+        <a href="/obraznastenu/eshop/107-1-Obrazy-vo-farbach-25" target="_self">
+      <span>
+  Obrazy vo farbách -25%    </span>
+      </a>
+      </li>
+    <li class="category-menu-sep-2">
+      <span>
+  Obľúbené medzi zákazníkmi    </span>
+    </li>
+    <li class="eshop-menu-item item-6 has-submenu">
+        <a href="/obraznastenu/eshop/106-1-Kolekcia-obrazov-LIPA" target="_self">
+      <span>
+  Kolekcia obrazov LIPA    </span>
+      </a>
+      <ul class="eshop-submenu menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <a href="/obraznastenu/eshop/106-1-Kolekcia-obrazov-LIPA/555-2-Abstrakty" target="_self">
+      <span>
+  Abstrakty    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <a href="/obraznastenu/eshop/106-1-Kolekcia-obrazov-LIPA/556-2-Anjel" target="_self">
+      <span>
+  Anjel    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <a href="/obraznastenu/eshop/106-1-Kolekcia-obrazov-LIPA/557-2-Krajina" target="_self">
+      <span>
+  Krajina    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <a href="/obraznastenu/eshop/106-1-Kolekcia-obrazov-LIPA/558-2-Kvety" target="_self">
+      <span>
+  Kvety    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-5">
+        <a href="/obraznastenu/eshop/106-1-Kolekcia-obrazov-LIPA/559-2-Lode-a-plachetnice" target="_self">
+      <span>
+  Lode a plachetnice    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-6">
+        <a href="/obraznastenu/eshop/106-1-Kolekcia-obrazov-LIPA/560-2-Mesto" target="_self">
+      <span>
+  Mesto    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-7">
+        <a href="/obraznastenu/eshop/106-1-Kolekcia-obrazov-LIPA/561-2-Priroda" target="_self">
+      <span>
+  Príroda    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-8">
+        <a href="/obraznastenu/eshop/106-1-Kolekcia-obrazov-LIPA/562-2-Stromy" target="_self">
+      <span>
+  Stromy    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-9">
+        <a href="/obraznastenu/eshop/106-1-Kolekcia-obrazov-LIPA/563-2-Zeny" target="_self">
+      <span>
+  Ženy    </span>
+      </a>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-7">
+        <a href="/obraznastenu/eshop/17-1-Obrazy-z-fotografie" target="_self">
+      <span>
+  Obrazy z fotografie    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-8 has-submenu">
+        <a href="/obraznastenu/eshop/120-1-Malovanie-podla-cisel" target="_self">
+      <span>
+  Maľovanie podľa čísel    </span>
+      </a>
+      <ul class="eshop-submenu menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <a href="/obraznastenu/eshop/120-1-Malovanie-podla-cisel/565-2-pre-dospelych" target="_self">
+      <span>
+  pre dospelých    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <a href="/obraznastenu/eshop/120-1-Malovanie-podla-cisel/566-2-pre-deti" target="_self">
+      <span>
+  pre deti    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <a href="/obraznastenu/eshop/120-1-Malovanie-podla-cisel/564-2-so-zlatymi-platkami" target="_self">
+      <span>
+  so zlatými plátkami    </span>
+      </a>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-9 has-submenu">
+        <a href="/obraznastenu/eshop/20-1-Malovane-obrazy" target="_self">
+      <span>
+  Maľované obrazy    </span>
+      </a>
+      <ul class="eshop-submenu menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <a href="/obraznastenu/eshop/20-1-Malovane-obrazy/172-2-NOVINKY" target="_self">
+      <span>
+  NOVINKY    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <a href="/obraznastenu/eshop/20-1-Malovane-obrazy/554-2-Najnovsie-TRENDY" target="_self">
+      <span>
+  Najnovšie TRENDY    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <a href="/obraznastenu/eshop/20-1-Malovane-obrazy/168-2-Abstraktne-obrazy" target="_self">
+      <span>
+  Abstraktné obrazy    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <a href="/obraznastenu/eshop/20-1-Malovane-obrazy/169-2-Malovane-kvety" target="_self">
+      <span>
+  Maľované kvety    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-5">
+        <a href="/obraznastenu/eshop/20-1-Malovane-obrazy/170-2-Obrazy-mesta" target="_self">
+      <span>
+  Obrazy mesta    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-6">
+        <a href="/obraznastenu/eshop/20-1-Malovane-obrazy/171-2-Obrazy-krajiny" target="_self">
+      <span>
+  Obrazy krajiny    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-7">
+        <a href="/obraznastenu/eshop/20-1-Malovane-obrazy/173-2-Obrazy-stromy" target="_self">
+      <span>
+  Obrazy stromy    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-8">
+        <a href="/obraznastenu/eshop/20-1-Malovane-obrazy/174-2-Obrazy-lasky" target="_self">
+      <span>
+  Obrazy lásky    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-9">
+        <a href="/obraznastenu/eshop/20-1-Malovane-obrazy/176-2-Obrazy-zeny" target="_self">
+      <span>
+  Obrazy ženy    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-10">
+        <a href="/obraznastenu/eshop/20-1-Malovane-obrazy/177-2-Obrazy-pre-inspiraciu" target="_self">
+      <span>
+  Obrazy pre inšpiráciu    </span>
+      </a>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-10">
+        <a href="/obraznastenu/eshop/101-1-Nove-trendy-obrazy" target="_self">
+      <span>
+  Nové trendy obrazy    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-11 has-submenu">
+        <a href="/obraznastenu/eshop/98-1-Styly-byvania" target="_self">
+      <span>
+  Štýly bývania    </span>
+      </a>
+      <ul class="eshop-submenu menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <a href="/obraznastenu/eshop/98-1-Styly-byvania/533-2-Vidiecky-styl-byvania" target="_self">
+      <span>
+  Vidiecky štýl bývania    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <a href="/obraznastenu/eshop/98-1-Styly-byvania/534-2-Stredomorsky-styl-byvania" target="_self">
+      <span>
+  Stredomorský štýl bývania    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <a href="/obraznastenu/eshop/98-1-Styly-byvania/535-2-Skandinavsky-styl-byvania" target="_self">
+      <span>
+  Škandinávsky štýl bývania     </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <a href="/obraznastenu/eshop/98-1-Styly-byvania/541-2-Romance-styl-byvania" target="_self">
+      <span>
+  Romance štýl bývania    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-5">
+        <a href="/obraznastenu/eshop/98-1-Styly-byvania/536-2-Industrialny-styl-byvania" target="_self">
+      <span>
+  Industriálny štýl bývania    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-6">
+        <a href="/obraznastenu/eshop/98-1-Styly-byvania/537-2-Pop-Art-styl-byvania" target="_self">
+      <span>
+  Pop Art štýl bývania    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-7">
+        <a href="/obraznastenu/eshop/98-1-Styly-byvania/538-2-Etno-Boho-styl-byvania" target="_self">
+      <span>
+  Etno / Boho štýl bývania    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-8">
+        <a href="/obraznastenu/eshop/98-1-Styly-byvania/539-2-Gurmansky-styl-byvania" target="_self">
+      <span>
+  Gurmánsky štýl bývania    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-9">
+        <a href="/obraznastenu/eshop/98-1-Styly-byvania/540-2-Styl-pre-deti" target="_self">
+      <span>
+  Štýl pre deti    </span>
+      </a>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-12 has-submenu">
+        <a href="/obraznastenu/eshop/57-1-Moderne-byvanie" target="_self">
+      <span>
+  Moderné bývanie    </span>
+      </a>
+      <ul class="eshop-submenu menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <a href="/obraznastenu/eshop/57-1-Moderne-byvanie/528-2-Modre-Obrazy" target="_self">
+      <span>
+  Modré Obrazy    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <a href="/obraznastenu/eshop/57-1-Moderne-byvanie/525-2-Biele-a-cierne-Obrazy" target="_self">
+      <span>
+  Biele a čierne Obrazy    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <a href="/obraznastenu/eshop/57-1-Moderne-byvanie/531-2-Zelene-Obrazy" target="_self">
+      <span>
+  Zelené Obrazy    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <a href="/obraznastenu/eshop/57-1-Moderne-byvanie/543-2-Farebne-Obrazy" target="_self">
+      <span>
+  Farebné Obrazy    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-5">
+        <a href="/obraznastenu/eshop/57-1-Moderne-byvanie/529-2-Cervene-Obrazy" target="_self">
+      <span>
+  Červené Obrazy     </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-6">
+        <a href="/obraznastenu/eshop/57-1-Moderne-byvanie/527-2-Ruzove-a-fialove-obrazy" target="_self">
+      <span>
+  Ružové a fialové obrazy    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-7">
+        <a href="/obraznastenu/eshop/57-1-Moderne-byvanie/526-2-Hnede-Obrazy" target="_self">
+      <span>
+  Hnedé Obrazy    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-8">
+        <a href="/obraznastenu/eshop/57-1-Moderne-byvanie/542-2-Zlte-a-oranzove-obrazy" target="_self">
+      <span>
+  Žlté a oranžové obrazy    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-9">
+        <a href="/obraznastenu/eshop/57-1-Moderne-byvanie/530-2-Sive-Obrazy" target="_self">
+      <span>
+  Sivé Obrazy    </span>
+      </a>
+      </li>
+    </ul>
+    </li>
+    <li class="category-menu-sep-3">
+      <span>
+  Dizajnéri    </span>
+    </li>
+    <li class="eshop-menu-item item-13 has-submenu">
+        <a href="/obraznastenu/eshop/122-1-Moderne-obrazy" target="_self">
+      <span>
+  Moderné obrazy    </span>
+      </a>
+      <ul class="eshop-submenu menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <a href="/obraznastenu/eshop/122-1-Moderne-obrazy/579-2-Moderne-dizajny" target="_self">
+      <span>
+  Moderné dizajny    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <a href="/obraznastenu/eshop/122-1-Moderne-obrazy/577-2-Rodinna-harmonia" target="_self">
+      <span>
+  Rodinná harmónia    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <a href="/obraznastenu/eshop/122-1-Moderne-obrazy/578-2-Prirodna-krasa" target="_self">
+      <span>
+  Prírodná krása    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <a href="/obraznastenu/eshop/122-1-Moderne-obrazy/573-2-PREMIUM-ART" target="_self">
+      <span>
+  PREMIUM ART    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-5">
+        <a href="/obraznastenu/eshop/122-1-Moderne-obrazy/575-2-Duchovne-motivy" target="_self">
+      <span>
+  Duchovné motívy    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-6">
+        <a href="/obraznastenu/eshop/122-1-Moderne-obrazy/580-2-Vesele-obrazy" target="_self">
+      <span>
+  Veselé obrazy    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-7">
+        <a href="/obraznastenu/eshop/122-1-Moderne-obrazy/576-2-Umelecka-inspiracia" target="_self">
+      <span>
+  Umelecká inšpirácia    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-8">
+        <a href="/obraznastenu/eshop/122-1-Moderne-obrazy/574-2-Viacdielne" target="_self">
+      <span>
+  Viacdielne    </span>
+      </a>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-14 has-submenu">
+        <a href="/obraznastenu/eshop/90-1-Dan-Johannson" target="_self">
+      <span>
+  Dan Johannson    </span>
+      </a>
+      <ul class="eshop-submenu menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <a href="/obraznastenu/eshop/90-1-Dan-Johannson/547-2-Obrazy" target="_self">
+      <span>
+  Obrazy    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <a href="/obraznastenu/eshop/90-1-Dan-Johannson/549-2-Plagaty" target="_self">
+      <span>
+  Plagáty    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <a href="/obraznastenu/eshop/90-1-Dan-Johannson/548-2-Tapety" target="_self">
+      <span>
+  Tapety    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <a href="/obraznastenu/eshop/90-1-Dan-Johannson/551-2-Zavesne-platna" target="_self">
+      <span>
+  Závesné plátna    </span>
+      </a>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-15">
+        <a href="/obraznastenu/eshop/38-1-Tom-Loris" target="_self">
+      <span>
+  Tom Loris    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-16">
+        <a href="/obraznastenu/eshop/71-1-Banksy" target="_self">
+      <span>
+  Banksy    </span>
+      </a>
+      </li>
+    <li class="category-menu-sep-4">
+      <span>
+  Obrazy na plátne    </span>
+    </li>
+    <li class="eshop-menu-item item-17">
+        <a href="/obraznastenu/eshop/58-1-Novinky" target="_self">
+      <span>
+  Novinky    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-18">
+        <a href="/obraznastenu/eshop/100-1-Obrazy-pre-deti" target="_self">
+      <span>
+  Obrazy pre deti    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-19">
+        <a href="/obraznastenu/eshop/99-1-Atelier-LIPA" target="_self">
+      <span>
+  Ateliér LIPA    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-20 has-submenu">
+        <a href="/obraznastenu/eshop/22-1-Pop-Art-obrazy" target="_self">
+      <span>
+  Pop Art obrazy    </span>
+      </a>
+      <ul class="eshop-submenu menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <a href="/obraznastenu/eshop/22-1-Pop-Art-obrazy/34-2-Film" target="_self">
+      <span>
+  Film    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <a href="/obraznastenu/eshop/22-1-Pop-Art-obrazy/35-2-Hudba" target="_self">
+      <span>
+  Hudba    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <a href="/obraznastenu/eshop/22-1-Pop-Art-obrazy/36-2-Auta" target="_self">
+      <span>
+  Autá    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <a href="/obraznastenu/eshop/22-1-Pop-Art-obrazy/37-2-Inspiracia" target="_self">
+      <span>
+  Inšpirácia    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-5">
+        <a href="/obraznastenu/eshop/22-1-Pop-Art-obrazy/46-2-Mafia" target="_self">
+      <span>
+  Mafia    </span>
+      </a>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-21 has-submenu">
+        <a href="/obraznastenu/eshop/37-1-Reprodukcie" target="_self">
+      <span>
+  Reprodukcie    </span>
+      </a>
+      <ul class="eshop-submenu menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <a href="/obraznastenu/eshop/37-1-Reprodukcie/75-2-Alfons-Mucha" target="_self">
+      <span>
+  Alfons Mucha    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <a href="/obraznastenu/eshop/37-1-Reprodukcie/77-2-Gustav-Klimt" target="_self">
+      <span>
+  Gustav Klimt    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <a href="/obraznastenu/eshop/37-1-Reprodukcie/78-2-Vincent-van-Gogh" target="_self">
+      <span>
+  Vincent van Gogh    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <a href="/obraznastenu/eshop/37-1-Reprodukcie/79-2-Claude-Monet" target="_self">
+      <span>
+  Claude Monet    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-5">
+        <a href="/obraznastenu/eshop/37-1-Reprodukcie/80-2-Pierre-Auguste-Renoir" target="_self">
+      <span>
+  Pierre Auguste Renoir    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-6">
+        <a href="/obraznastenu/eshop/37-1-Reprodukcie/81-2-Tamara-de-Lempicka" target="_self">
+      <span>
+  Tamara de Lempicka    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-7">
+        <a href="/obraznastenu/eshop/37-1-Reprodukcie/150-2-Leonardo-da-Vinci" target="_self">
+      <span>
+  Leonardo da Vinci    </span>
+      </a>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-22">
+        <a href="/obraznastenu/eshop/104-1-Foto-kolaze" target="_self">
+      <span>
+  Foto koláže    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-23 has-submenu">
+        <a href="/obraznastenu/eshop/80-1-Kuchyna" target="_self">
+      <span>
+  Kuchyňa    </span>
+      </a>
+      <ul class="eshop-submenu menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <a href="/obraznastenu/eshop/80-1-Kuchyna/487-2-Kava" target="_self">
+      <span>
+  Káva    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <a href="/obraznastenu/eshop/80-1-Kuchyna/488-2-Caj" target="_self">
+      <span>
+  Čaj    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <a href="/obraznastenu/eshop/80-1-Kuchyna/489-2-Cokolada" target="_self">
+      <span>
+  Čokoláda    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <a href="/obraznastenu/eshop/80-1-Kuchyna/490-2-Korenie" target="_self">
+      <span>
+  Korenie    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-5">
+        <a href="/obraznastenu/eshop/80-1-Kuchyna/491-2-Vino" target="_self">
+      <span>
+  Víno    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-6">
+        <a href="/obraznastenu/eshop/80-1-Kuchyna/492-2-Ovocie" target="_self">
+      <span>
+  Ovocie    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-7">
+        <a href="/obraznastenu/eshop/80-1-Kuchyna/493-2-Kvety-vo-vaze" target="_self">
+      <span>
+  Kvety vo váze    </span>
+      </a>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-24 has-submenu">
+        <a href="/obraznastenu/eshop/74-1-Abstrakty" target="_self">
+      <span>
+  Abstrakty    </span>
+      </a>
+      <ul class="eshop-submenu menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <a href="/obraznastenu/eshop/74-1-Abstrakty/444-2-Cierno-biele" target="_self">
+      <span>
+  Čierno-biele    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <a href="/obraznastenu/eshop/74-1-Abstrakty/445-2-Hnede" target="_self">
+      <span>
+  Hnedé    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <a href="/obraznastenu/eshop/74-1-Abstrakty/446-2-Cervene" target="_self">
+      <span>
+  Červené    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <a href="/obraznastenu/eshop/74-1-Abstrakty/447-2-Fialove" target="_self">
+      <span>
+  Fialové    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-5">
+        <a href="/obraznastenu/eshop/74-1-Abstrakty/448-2-Modre" target="_self">
+      <span>
+  Modré    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-6">
+        <a href="/obraznastenu/eshop/74-1-Abstrakty/449-2-Zlte-Oranzove" target="_self">
+      <span>
+  Žlté / Oranžové    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-7">
+        <a href="/obraznastenu/eshop/74-1-Abstrakty/450-2-Zelene" target="_self">
+      <span>
+  Zelené    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-8">
+        <a href="/obraznastenu/eshop/74-1-Abstrakty/451-2-Ohnive" target="_self">
+      <span>
+  Ohnivé    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-9">
+        <a href="/obraznastenu/eshop/74-1-Abstrakty/452-2-Farebne" target="_self">
+      <span>
+  Farebné    </span>
+      </a>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-25 has-submenu">
+        <a href="/obraznastenu/eshop/73-1-Priroda" target="_self">
+      <span>
+  Príroda    </span>
+      </a>
+      <ul class="eshop-submenu menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <a href="/obraznastenu/eshop/73-1-Priroda/441-2-Zvierata" target="_self">
+      <span>
+  Zvieratá                        </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <a href="/obraznastenu/eshop/73-1-Priroda/442-2-Stromy" target="_self">
+      <span>
+  Stromy                  </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <a href="/obraznastenu/eshop/73-1-Priroda/443-2-Rastliny" target="_self">
+      <span>
+  Rastliny                   </span>
+      </a>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-26 has-submenu">
+        <a href="/obraznastenu/eshop/75-1-Kvety" target="_self">
+      <span>
+  Kvety    </span>
+      </a>
+      <ul class="eshop-submenu menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <a href="/obraznastenu/eshop/75-1-Kvety/453-2-Obrazy-ruze" target="_self">
+      <span>
+  Obrazy ruže    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <a href="/obraznastenu/eshop/75-1-Kvety/454-2-Obrazy-tulipany" target="_self">
+      <span>
+  Obrazy tulipány    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <a href="/obraznastenu/eshop/75-1-Kvety/455-2-Biele-kvety" target="_self">
+      <span>
+  Biele kvety    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <a href="/obraznastenu/eshop/75-1-Kvety/456-2-Cervene-kvety" target="_self">
+      <span>
+  Červené kvety    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-5">
+        <a href="/obraznastenu/eshop/75-1-Kvety/457-2-Fialove-a-ruzove-kvety" target="_self">
+      <span>
+  Fialové a ružové kvety    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-6">
+        <a href="/obraznastenu/eshop/75-1-Kvety/458-2-Zlte-kvety" target="_self">
+      <span>
+  Žlté kvety    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-7">
+        <a href="/obraznastenu/eshop/75-1-Kvety/459-2-Modre-kvety" target="_self">
+      <span>
+  Modré kvety    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-8">
+        <a href="/obraznastenu/eshop/75-1-Kvety/460-2-Farebne-kvety" target="_self">
+      <span>
+  Farebné kvety    </span>
+      </a>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-27">
+        <a href="/obraznastenu/eshop/124-1-Motivacne" target="_self">
+      <span>
+  Motivačné    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-28 has-submenu">
+        <a href="/obraznastenu/eshop/76-1-Mesta" target="_self">
+      <span>
+  Mestá    </span>
+      </a>
+      <ul class="eshop-submenu menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <a href="/obraznastenu/eshop/76-1-Mesta/461-2-Obrazy-Londyn" target="_self">
+      <span>
+  Obrazy Londýn    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <a href="/obraznastenu/eshop/76-1-Mesta/462-2-Obrazy-New-York" target="_self">
+      <span>
+  Obrazy New York    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <a href="/obraznastenu/eshop/76-1-Mesta/463-2-Obrazy-Pariz" target="_self">
+      <span>
+  Obrazy Paríž    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <a href="/obraznastenu/eshop/76-1-Mesta/464-2-Mapy" target="_self">
+      <span>
+  Mapy    </span>
+      </a>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-29 has-submenu">
+        <a href="/obraznastenu/eshop/78-1-Krajina" target="_self">
+      <span>
+  Krajina    </span>
+      </a>
+      <ul class="eshop-submenu menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <a href="/obraznastenu/eshop/78-1-Krajina/473-2-Hory" target="_self">
+      <span>
+  Hory    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <a href="/obraznastenu/eshop/78-1-Krajina/474-2-Luky" target="_self">
+      <span>
+  Lúky    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <a href="/obraznastenu/eshop/78-1-Krajina/475-2-Puste" target="_self">
+      <span>
+  Púšte    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <a href="/obraznastenu/eshop/78-1-Krajina/476-2-Plaze" target="_self">
+      <span>
+  Pláže    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-5">
+        <a href="/obraznastenu/eshop/78-1-Krajina/477-2-Vodopady" target="_self">
+      <span>
+  Vodopády    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-6">
+        <a href="/obraznastenu/eshop/78-1-Krajina/478-2-Zapad-slnka" target="_self">
+      <span>
+  Západ slnka    </span>
+      </a>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-30 has-submenu">
+        <a href="/obraznastenu/eshop/79-1-Feng-Shui" target="_self">
+      <span>
+  Feng Shui    </span>
+      </a>
+      <ul class="eshop-submenu menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <a href="/obraznastenu/eshop/79-1-Feng-Shui/479-2-Voda" target="_self">
+      <span>
+  Voda    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <a href="/obraznastenu/eshop/79-1-Feng-Shui/480-2-Drevo" target="_self">
+      <span>
+  Drevo    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <a href="/obraznastenu/eshop/79-1-Feng-Shui/481-2-Ohen" target="_self">
+      <span>
+  Oheň    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <a href="/obraznastenu/eshop/79-1-Feng-Shui/482-2-Zem" target="_self">
+      <span>
+  Zem    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-5">
+        <a href="/obraznastenu/eshop/79-1-Feng-Shui/483-2-Kov" target="_self">
+      <span>
+  Kov    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-6">
+        <a href="/obraznastenu/eshop/79-1-Feng-Shui/484-2-Feng-shui-zvierata" target="_self">
+      <span>
+  Feng shui zvieratá    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-7">
+        <a href="/obraznastenu/eshop/79-1-Feng-Shui/485-2-Budha" target="_self">
+      <span>
+  Budha    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-8">
+        <a href="/obraznastenu/eshop/79-1-Feng-Shui/486-2-Energeticke-obrazy" target="_self">
+      <span>
+  Energetické obrazy    </span>
+      </a>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-31 has-submenu">
+        <a href="/obraznastenu/eshop/66-1-Inspiracia" target="_self">
+      <span>
+  Inšpirácia    </span>
+      </a>
+      <ul class="eshop-submenu menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <a href="/obraznastenu/eshop/66-1-Inspiracia/277-2-Umenie" target="_self">
+      <span>
+  Umenie    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <a href="/obraznastenu/eshop/66-1-Inspiracia/279-2-Moto" target="_self">
+      <span>
+  Moto    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <a href="/obraznastenu/eshop/66-1-Inspiracia/280-2-Priroda" target="_self">
+      <span>
+  Príroda    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <a href="/obraznastenu/eshop/66-1-Inspiracia/281-2-Fantazia" target="_self">
+      <span>
+  Fantázia    </span>
+      </a>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-32">
+        <a href="/obraznastenu/eshop/53-1-Slovensko" target="_self">
+      <span>
+  Slovensko    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-33">
+        <a href="/obraznastenu/eshop/51-1-s-Textami" target="_self">
+      <span>
+  s Textami    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-34">
+        <a href="/obraznastenu/eshop/24-1-Poukazy" target="_self">
+      <span>
+  Poukazy    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-35 has-submenu">
+        <a href="/obraznastenu/eshop/46-1-Dekoracie-a-textil" target="_self">
+      <span>
+  Dekorácie a textil    </span>
+      </a>
+      <ul class="eshop-submenu menu-level-2">
+      <li class="eshop-menu-item item-1">
+        <a href="/obraznastenu/eshop/46-1-Dekoracie-a-textil/570-2-Nastenne-hodiny" target="_self">
+      <span>
+  Nástenné hodiny    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-2">
+        <a href="/obraznastenu/eshop/46-1-Dekoracie-a-textil/567-2-Zavesne-platna" target="_self">
+      <span>
+  Závesné plátna    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-3">
+        <a href="/obraznastenu/eshop/46-1-Dekoracie-a-textil/569-2-Plagaty" target="_self">
+      <span>
+  Plagáty    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-4">
+        <a href="/obraznastenu/eshop/46-1-Dekoracie-a-textil/568-2-Tapety-na-stenu" target="_self">
+      <span>
+  Tapety na stenu    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-5">
+        <a href="/obraznastenu/eshop/46-1-Dekoracie-a-textil/571-2-Nalepky-na-stenu" target="_self">
+      <span>
+  Nálepky na stenu    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-6">
+        <a href="/obraznastenu/eshop/46-1-Dekoracie-a-textil/572-2-Bytovy-textil" target="_self">
+      <span>
+  Bytový textil    </span>
+      </a>
+      </li>
+    </ul>
+    </li>
+    <li class="eshop-menu-item item-36">
+        <a href="/obraznastenu/eshop/115-1-Zavesne-platna" target="_self">
+      <span>
+  Závesné plátna    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-37">
+        <a href="/obraznastenu/eshop/36-1-Tapety-na-stenu" target="_self">
+      <span>
+  Tapety na stenu    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-38">
+        <a href="/obraznastenu/eshop/111-1-Plagaty" target="_self">
+      <span>
+  Plagáty    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-39">
+        <a href="/obraznastenu/eshop/77-1-Nastenne-hodiny" target="_self">
+      <span>
+  Nástenné hodiny    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-40">
+        <a href="/obraznastenu/eshop/72-1-Nalepky-na-stenu" target="_self">
+      <span>
+  Nálepky na stenu    </span>
+      </a>
+      </li>
+    <li class="category-menu-sep-5">
+      <span>
+  Bytové doplnky a dekorácie:    </span>
+    </li>
+    <li class="eshop-menu-item item-41">
+        <a href="/obraznastenu/eshop/50-1-Bytovy-textil" target="_self">
+      <span>
+  Bytový textil    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-42">
+        <a href="/obraznastenu/eshop/42-1-Stojany-na-obrazy" target="_self">
+      <span>
+  Stojany na obrazy    </span>
+      </a>
+      </li>
+    <li class="category-menu-sep-6">
+      <span>
+  Tlačené obrazy na stenu:    </span>
+    </li>
+    <li class="eshop-menu-item item-43">
+        <a href="/obraznastenu/eshop/3-1-DIELNE-obrazy" target="_self">
+      <span>
+  1 DIELNE obrazy    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-44">
+        <a href="/obraznastenu/eshop/4-1-3-DIELNE-obrazy" target="_self">
+      <span>
+  3 DIELNE obrazy    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-45">
+        <a href="/obraznastenu/eshop/27-1-4-DIELNE-obrazy" target="_self">
+      <span>
+  4 DIELNE obrazy    </span>
+      </a>
+      </li>
+    <li class="eshop-menu-item item-46">
+        <a href="/obraznastenu/eshop/5-1-5-DIELNE-obrazy" target="_self">
+      <span>
+  5 DIELNE obrazy    </span>
+      </a>
+      </li>
+    </ul>
+    </div>
+    </div>
+    </div>
+      </div><!-- END LEFT BOX -->
+        <div id="right-box"><!-- RIGHT BOX2 -->
+          </div><!-- END RIGHT BOX -->
+  
+
+        <hr class="hide">
+                    <div id="centerpage2"><!-- CENTER PAGE -->
+          <div id="incenterpage2"><!-- in the center -->
+                    <script>
+        fbq('track', 'ViewContent', {
+                content_name: 'Obrazy na plátne - PREMIUM ART – Čierny býk - 70x50 cm',
+                content_ids: ['50660'],
+                content_type: 'product',
+                value: 73.4,
+            currency: 'EUR'
+        });
+    </script>
+    <script type="text/javascript">
+ga('ec:addProduct', {
+'id': '50660',
+'name': 'Obrazy na plátne - PREMIUM ART – Čierny býk - 70x50 cm',
+'price': '73.4',
+'brand': '',
+'category': 'PREMIUM ART ♥',
+'variant': ''70x50 cm'});
+
+ga('ec:setAction', 'detail');
+ga('send', 'pageview');
+</script>
+<script type="text/javascript">
+var product_information = {
+id: '50660',
+name: 'Obrazy na plátne - PREMIUM ART – Čierny býk - 70x50 cm',
+brand: '',
+price: '73.4',
+category: 'PREMIUM ART ♥',
+'variant': ''70x50 cm',
+is_variant: true  };
+</script>
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/ sk_SK/all.js#xfbml=1&appId=";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Product",
+            "name": "Obrazy na plátne - PREMIUM ART – Čierny býk",
+    "description": "Ak hľadáte jedinečný doplnok do svojho interiéru, vyberte si našu novinku PREMIUM ART! Bez ohľadu na priestor, obrazy s nanesenými zlatými plátkami okamžite dodajú pocit sofistikovanosti a luxusu. Budú skvelým doplnkom pre vaše steny.",
+            "image": "https://www.obraznastenu.sk/fotky12085/fotos/obraz-na-stenu-so-zlatymi-platkami_premium-art_XOGPA001E1-x.jpg",
+            "gtin13": "",
+    "mpn": "",
+    "sku": "XOGPA001E1_70x50",
+    "brand": "",
+
+    "offers": {
+        "@type": "Offer",
+        "availability": "http://schema.org/InStock",
+        "price": "73.40",
+"priceCurrency": "EUR",
+"priceValidUntil": "2033-04-11",
+        "url": "https://www.obraznastenu.sk/obrazy-na-platne-premium-art-cierny-byk-70x50-cm"
+    }
+  }
+</script>
+          <script type="application/ld+json">
+{
+"@context": "http://schema.org",
+"@type": "BreadcrumbList",
+"itemListElement": [
+{
+    "@type": "ListItem",
+    "position": 1,
+    "item": {
+        "@id": "https://www.obraznastenu.sk",
+        "name": "Home"
+        }
+},     {
+    "@type": "ListItem",
+    "position": 2,
+    "item": {
+        "@id": "https://www.obraznastenu.sk/obraznastenu/eshop/127-1-PREMIUM-ART",
+        "name": "PREMIUM ART ♥"
+    }
+    },
+{
+    "@type": "ListItem",
+    "position": 3,
+    "item": {
+        "@id": "https://www.obraznastenu.sk/obrazy-na-platne-premium-art-cierny-byk-70x50-cm",
+        "name": "Obrazy na plátne - PREMIUM ART – Čierny býk - 70x50 cm"
+}
+}
+]}
+</script>
+      <script type="text/javascript" src="/wa_script/js/bs_variants.js?date=2462013"></script>
+<script type="text/javascript" src="/wa_script/js/rating_system.js"></script>
+<script type="text/javascript">
+<!--
+$(document).ready(function () {
+  BS.Variants.register_events();
+  BS.Variants.id_product = 50660;
+});
+
+function ShowImage2(name, width, height, domen) {
+  window.open("/wa_script/image2.php?soub=" + name + "&domena=" + domen, "", "toolbar=no,scrollbars=yes,location=no,status=no,width=" + width + ",height=" + height + ",resizable=1,screenX=20,screenY=20");
+}
+;
+// --></script>
+<script type="text/javascript">
+<!--
+function Kontrola() {
+  if (document.theForm.autor.value == "") {
+    document.theForm.autor.focus();
+    BS.ui.popMessage.alert("Musíte vyplniť svoje meno");
+    return false;
+  }
+  if (document.theForm.email.value == "") {
+    document.theForm.email.focus();
+    BS.ui.popMessage.alert("Musíte vyplniť svoj email");
+    return false;
+  }
+  if (document.theForm.titulek.value == "") {
+    document.theForm.titulek.focus();
+    BS.ui.popMessage.alert("Vyplňte názov príspevku");
+    return false;
+  }
+  if (document.theForm.prispevek.value == "") {
+    document.theForm.prispevek.focus();
+    BS.ui.popMessage.alert("Zadajte text príspevku");
+    return false;
+  }
+  if (document.theForm.captcha.value == "") {
+    document.theForm.captcha.focus();
+    BS.ui.popMessage.alert("Opíšte bezpečnostný kód");
+    return false;
+  }
+  if (jQuery("#captcha_image").length > 0 && jQuery("#captcha_input").val() == "") {
+    jQuery("#captcha_input").focus();
+    BS.ui.popMessage.alert("Opíšte text z bezpečnostného obrázku");
+    return false;
+  }
+
+  }
+
+  -->
+</script>
+      <script type="text/javascript" src="/wa_script/js/detail.js?date=2022-06-01"></script>
+      <script type="text/javascript">
+  product_price = "74";
+product_price_non_ceil =   "73.4";
+currency = "€";
+currency_position = "1";
+tax_subscriber = "a";
+ceny_jak = "0";
+desetiny = "2";
+dph = "20";
+currency_second = "";
+currency_second_rate = "0";
+lang = "";    </script>
+      <script>
+      related_click = false;
+      $(document).ready(function () {
+          $(".buy_btn").on("click", function(){
+                related_click = true;
+          });
+
+          $("#buy_btn, #buy_prg").on("click", function () {
+              var variant_selected_reload = false;
+              var url = window.location.href;
+              if (url.indexOf('?variant=not_selected') > -1)
+              {
+                  url = window.location.href;
+              }
+              else
+              {
+                  url = window.location.href + "?variant=not_selected";
+              }
+              if ($("#1SelectBoxIt").length !== undefined)
+              {
+                  var x = $("#1SelectBoxIt").attr("aria-activedescendant");
+                  if (x == 0)
+                  {
+                      variant_selected_reload = true;
+                      document.cookie = "variantOne=unselected;path=/";
+                  }
+                  else
+                  {
+                      var id_ciselnik = $("#1SelectBoxItOptions #" + x).attr("data-val");
+                      document.cookie = "variantOne=" + id_ciselnik + ";path=/";
+                  }
+              }
+              else if ($("#1SelectBoxItText").length !== undefined)
+              {
+                  var x = $("#1SelectBoxItText").attr("data-val");
+                  if (x == 0)
+                  {
+                      variant_selected_reload = true;
+                      document.cookie = "variantOne=unselected;path=/";
+                  }
+                  else
+                  {
+                      var id_ciselnik = $("#1SelectBoxItOptions #" + x).attr("data-val");
+                      document.cookie = "variantOne=" + id_ciselnik + ";path=/";
+                  }
+              }
+              if ($("#2SelectBoxIt").length !== undefined)
+              {
+                  var x = $("#2SelectBoxIt").attr("aria-activedescendant");
+                  if (x == 0)
+                  {
+                      variant_selected_reload = true;
+                      document.cookie = "variantTwo=unselected;path=/";
+                  }
+                  else
+                  {
+                      var id_ciselnik = $("#2SelectBoxItOptions #" + x).attr("data-val");
+                      document.cookie = "variantTwo=" + id_ciselnik + ";path=/";
+                  }
+              }
+              else if ($("#2SelectBoxItText").length !== undefined)
+              {
+                  var x = $("#2SelectBoxItText").attr("data-val");
+                  if (x == 0)
+                  {
+                      variant_selected_reload = true;
+                      document.cookie = "variantTwo=unselected;path=/";
+                  }
+                  else
+                  {
+                      var id_ciselnik = $("#2SelectBoxItOptions #" + x).attr("data-val");
+                      document.cookie = "variantTwo=" + id_ciselnik + ";path=/";
+                  }
+              }
+              if ($("#3SelectBoxIt").length !== undefined)
+              {
+                  var x = $("#3SelectBoxIt").attr("aria-activedescendant");
+                  if (x == 0)
+                  {
+                      variant_selected_reload = true;
+                      document.cookie = "variantThree=unselected;path=/";
+                  }
+                  else
+                  {
+                      var id_ciselnik = $("#3SelectBoxItOptions #" + x).attr("data-val");
+                      document.cookie = "variantThree=" + id_ciselnik + ";path=/";
+                  }
+              }
+              else if ($("#3SelectBoxItText").length !== undefined)
+              {
+                  var x = $("#3SelectBoxItText").attr("data-val");
+                  if (x == 0)
+                  {
+                      variant_selected_reload = true;
+                      document.cookie = "variantThree=unselected;path=/";
+                  }
+                  else
+                  {
+                      var id_ciselnik = $("#3SelectBoxItOptions #" + x).attr("data-val");
+                      document.cookie = "variantThree=" + id_ciselnik + ";path=/";
+                  }
+              }
+              if(variant_selected_reload == true)
+              {
+                  jQuery("input[name=variant_selected]").remove();
+                  window.location.replace(url);
+                  return false;
+              }
+          });
+      });
+  </script>
+      <div id="wherei"><!-- wherei -->
+        <p>
+    <a href="/">Úvod</a>
+    <span class="arrow">&#187;</span>
+                       <a href="/obraznastenu/eshop/127-1-PREMIUM-ART">PREMIUM ART ♥</a>
+                        <span class="arrow">&#187;</span>        <span class="active">Obrazy na plátne - PREMIUM ART – Čierny býk - 70x50 cm</span>
+  </p>
+</div><!-- END wherei -->
+<pre></pre>
+    <div class="product-detail-container" > <!-- MICRODATA BOX -->
+          <h1>Obrazy na plátne - PREMIUM ART – Čierny býk - 70x50 cm</h1>
+    <h2 class="second-product-name">Kolekcia so zlatými plátkami na obraze</h2>      <div class="detail-box-product" data-idn="787213123"><!--DETAIL BOX -->
+                    <div class="col-l"><!-- col-l-->
+                    <div class="image"><!-- image-->
+                            <a href="/fotky12085/fotos/obraz-na-stenu-so-zlatymi-platkami_premium-art_XOGPA001E1-x.jpg" rel="lytebox"
+               title="Obrazy na plátne - PREMIUM ART – Čierny býk - 70x50 cm">
+                <span class="img" id="magnify_src">
+                  <img  id="detail_src_magnifying_small"
+                                                                                        src="/fotky12085/fotos/obraz-na-stenu-so-zlatymi-platkami_premium-art_XOGPA001E1-x.jpg"
+                                                                                        width="200" border=0
+                                                                                        alt="Obrazy na plátne - PREMIUM ART – Čierny býk - 70x50 cm"
+                                                                                        title="Obrazy na plátne - PREMIUM ART – Čierny býk - 70x50 cm">
+                </span>
+                                    <span class="image_foot"><span class="ico_magnifier"
+                                                 title="Obrazy na plátne - PREMIUM ART – Čierny býk - 70x50 cm">&nbsp;</span></span>
+                  
+                                </a>
+                        </div>
+          <!-- END image-->
+          <div class="break"></div>
+                  </div><!-- END col-l-->
+    <div class="box-spc"><!-- BOX-SPC -->
+      <div class="col-r"><!-- col-r-->
+                    <div class="break"><p>&nbsp;</p></div>
+                      <div class="social-box e-detail-social-box"><div id="social_facebook"><iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.obraznastenu.sk%2Fobraznastenu%2Feshop%2F122-1-Moderne-obrazy%2F0%2F5%2F50660-Obrazy-na-platne-PREMIUM-ART-Cierny-byk&amp;layout=button_count&amp;show_faces=false&amp;width=170&amp;action=like&amp;font=lucida+grande&amp;colorscheme=dark&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width: 170px; height:21px;"></iframe></div><div id="social_twitter"><a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.obraznastenu.sk/obraznastenu/eshop/122-1-Moderne-obrazy/0/5/50660-Obrazy-na-platne-PREMIUM-ART-Cierny-byk" data-text="Obrazy na plátne - PREMIUM ART – Čierny býk" data-count="horizontal">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script></div></div>
+                                  <div class="detail-info"><!-- detail info-->
+          <form style="margin: 0pt; padding: 0pt; vertical-align: bottom;"
+                action="/obraznastenu/eshop/127-1-PREMIUM-ART/0/6/50660" method="post">
+                              <div class="product-status-box">
+                    <p class="product-status">
+      </p>
+    <br/>
+<div id="stars_main" data-product-id="50660"
+     data-registered-id="0">
+          <div id="ip_rating" class="star_system"
+         style="width: 100%; height: 0px; line-height: 30px; text-align: center; font-size: 15px;">
+      <div id="ip_rating_hide" style="display: none;" data-ip-rating="0"
+           data-repair="a" data-repair-temp="a">
+        Vaše hodnotenie:
+        <span style="color: #ffc700">
+                             <i style="top: -2px; vertical-align: middle; color: #ffc700"
+                                aria-hidden="true" class="fa fa-star-o"
+                                id="star-1-voted"></i><!--
+                             --><i style="top: -2px; vertical-align: middle; color: #ffc700"
+                                   aria-hidden="true" class="fa fa-star-o"
+                                   id="star-2-voted"></i><!--
+                             --><i style="top: -2px; vertical-align: middle; color: #ffc700"
+                                   aria-hidden="true" class="fa fa-star-o"
+                                   id="star-3-voted"></i><!--
+                             --><i style="top: -2px; vertical-align: middle; color: #ffc700"
+                                   aria-hidden="true" class="fa fa-star-o"
+                                   id="star-4-voted"></i><!--
+                             --><i style="top: -2px; vertical-align: middle; color: #ffc700"
+                                   aria-hidden="true" class="fa fa-star-o"
+                                   id="star-5-voted"></i>
+                         </span>
+        <br/>
+        <input type="button" id="stars_submit_save" value="Poslať hodnotenie" style="cursor: pointer;">
+        <span id="after_save" style="display: none;">Ďakujeme za Vaše hodnotenie</span>
+      </div>
+    </div>
+          <div class="star_system"
+       style="width: 100%; height: 30px; line-height: 30px; text-align: center; font-size: 25px; position: relative; top: 8px;">
+                 <span style="color: #ffc700" id="star_system"
+                       data-average="0"
+                       title="0"
+                       data-registered=""
+                       data-registered-enable="n">
+                     <i style="top: 2px; position: relative; color:#ffc700;" 
+                                      aria-hidden="true" class="fa fa-star-o" id="star-1"></i><i style="top: 2px; position: relative; color:#ffc700;" 
+                                      aria-hidden="true" class="fa fa-star-o" id="star-2"></i><i style="top: 2px; position: relative; color:#ffc700;" 
+                                      aria-hidden="true" class="fa fa-star-o" id="star-3"></i><i style="top: 2px; position: relative; color:#ffc700;" 
+                                      aria-hidden="true" class="fa fa-star-o" id="star-4"></i><i style="top: 2px; position: relative; color:#ffc700;" 
+                                      aria-hidden="true" class="fa fa-star-o" id="star-5"></i>                     </span>
+    <span id="voted-count" data-count="0"
+          data-count-enable="n">
+                                          </span>
+  </div>
+</div>
+                  </div>
+                              <table class="cart" width="100%">
+              <col>
+              <col width="9%">
+              <col width="14%">
+              <col width="14%">
+              <tbody>
+                                  <tr class="before_variants stock-line stock-line-">
+                  <td class="stock-label" width="35%">Dostupnosť:</td>
+                  <td colspan="3" width="65%" class="prices stock-cell">
+                    <span class="fleft stock-text">U teba DOMA o 5 - 7 pracovných dní</span>
+                    <input type="hidden" name="availability"
+                           value="U teba DOMA o 5 - 7 pracovných dní">
+                  </td>
+                </tr>
+                                    <tr class="before_variants product-number">
+                  <td width="35%" class="product-number-text">Číslo produktu: </td>
+                  <td colspan="3" width="65%" class="prices product-number-text"><span class="fleft">
+                        XOGPA001E1_70x50</span>
+                    <input type="hidden" name="number"
+                           value="XOGPA001E1_70x50">
+                  </td>
+                </tr>
+                                      <tr>
+                    <td>Vyberte si veľkosť Obrazu PREMIUM ART</td>
+                      
+                      <td colspan="3" width="36%" class="prices ">
+                        <span class="fleft">
+                          <select name="86" id="1"
+                                  class="variant public-select2-styled">
+                            <option value="0" >Vyberte (3)</option>
+                                                                <option value="6129" selected="selected">'70x50 cm</option>
+                                                                    <option value="6130">'90x60 cm</option>
+                                                                    <option value="6131">'120x80 cm</option>
+                                                              </select>
+                        </span>
+                      </td>
+                  </tr>
+                  
+                      <tr class="product-total-vat">
+                    <td class="name-price-novat product-total-text">naša cena bez DPH                          :
+                    </td>
+                    <td colspan="3" class="prices product-total-value">
+                          <span class="price-novat fleft">
+  61,17&nbsp;€    </span>
+<input type="hidden" name="nase_cena" value="">
+                        </td>
+                  </tr>
+                                        <tr class="total">
+                    <td class="price-desc left">naša cena s DPH (20&nbsp;%):</td>
+                    <td colspan="3" class="prices">
+                      <div align="left" >
+                            <span class="price-vat" content="EUR">
+  <span class="price-value def_color" content="73,40">
+    73,40&nbsp;€      </span>
+</span>
+<input type="hidden" name="nase_cena" value="">
+                          </div>
+                    </td>
+                  </tr>
+                                      <tr class="product-cart-info">
+                  <td colspan="4">
+                        <div class="fleft product-cart-info-text"><br>do košíka:</div>
+<div class="fright textright product-cart-info-value">
+              <div class="input-spinner-group" data-input-spinner>
+  <span class="input-spinner-btn btn-l"><button type="button" class="spin-dec">-</button></span>
+  <input name="kusy"
+         value="1" id="kusy" class="quantity-input spin-input" maxlength="6" size="6">
+  <span class="input-spinner-btn btn-r"><button type="button" class="spin-inc">+</button></span>
+</div>
+      <span class="count">&nbsp;
+    ks      </span>&nbsp;
+                    <input type="submit" id="buy_btn" class="product-cart-btn" name="send_submit" value="Vložiť do košíka">
+      <input type="hidden" id="buy_click" name="buy_click" value="detail">
+                  <br>
+          </div>
+                      </td>
+                </tr>
+                                </tbody>
+            </table>
+            <input type="hidden" name="variant_selected" value="99770747" /><input type="hidden" name="null_variant_value" value="'70x50 cm" /><input type="hidden" name="pageURL" value ="http://www.obraznastenu.sk/obrazy-na-platne-premium-art-cierny-byk-70x50-cm">              </form>
+        </div><!-- END detail info-->
+        <div class="break"></div>
+      </div><!-- END col-r-->
+    </div><!-- END BOX-SPC -->
+          </div><!-- END DETAIL BOX -->
+</div><!-- MICRODATA BOX -->
+<div class="break"></div>
+<div class="part selected" id="description"><!--description-->
+<div class="spc">
+    <h3> </h3>
+<h1 style="text-align: justify;"><strong>Zlaté obrazy na plátne: V čom spočíva jedinečnosť a luxusný vzhľad PREMIUM ART?</strong></h1>
+<p style="text-align: justify;"><span>Naša novinka <strong>PREMIUM ART</strong> je hlboko zakorenená v kvalitných materiáloch a spôsobe spracovania zlatých plátkov na plátno. Kľúčová je osobná starostlivosť s dôrazom na detail. Získanie luxusného predmetu alebo zážitku nemusí, spravidla, stáť veľkú sumu peňazí.</span></p>
+<p style="text-align: justify;"><span>Mať pekné veci a príjemný priestor okolo seba môže výrazne zvýšiť radosť zo života. Pridajte na hodnote svojho interiéru prostredníctvom obrazov na plátne. Uvidíte, že v krajšom prostredí sa vám bude lepšie bývať.</span></p>
+<h2 style="text-align: justify;"><strong>Ako nanášame zlaté plátky na obrazy na plátne?</strong></h2>
+<p style="text-align: justify;"><span>Nanášanie zlatých plátkov na plátno je jedinečný a jemný proces tvorenia. Vyžaduje si skúsenosti a dlhoročnú prax. Už 15 rokov dávame stenám život a sme zárukou 100% ručnej práce. Každý obraz sa vytvára zvlášť, preto je tak hodnotný a jedinečný. </span></p>
+<p style="text-align: justify;"><span>Proces výroby je náročný, keďže sa kombinuje s<strong> novodobou digitálnou vodeodolnou tlačou</strong> a následne aj <strong>ručným nanášaním zlatých plátkov</strong>. Na záver obraz prechádza kontrolou, aby sa zlato nenachádzalo v tých oblastiach na plátne, kde nepatrí.</span></p>
+<p style="text-align: justify;"><span>Obrazy na stene pomáhajú premeniť priestor, vložiť doňho farby, emócie a udržať človeka ​​oddeleného od každodennosti a všednosti.</span></p>
+<div class="video-container"><iframe width="423" height="752" src="https://www.youtube.com/embed/cUoysWPuL58" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe></div>
+<p style="text-align: justify;"><span></span></p>
+<h2 style="text-align: justify;"><strong>Čo vieme z histórie o nanášaní zlata na predmety?</strong></h2>
+<p style="text-align: justify;"><span>Listové zlato je tradičné umenie, ktoré existuje od čias starých Egypťanov a slúžilo na oživenie umenia dekoratívnej maľby, ale aj na zdobenie dreva, kože či skla. </span></p>
+<p style="text-align: justify;"><span>V súčasnosti sa táto prastará technika zdobenia kombinuje s modernými technológiami a metódami s cieľom ozdobiť sféru interiérového dizajnu - obrazy a iné druhy umenia.</span></p>
+<p style="text-align: justify;"><span>My vám vytvoríme jedinečné dielo, ktoré je kombinované s <strong>novodobou digitálnou vodeodolnou tlačou a ručne maľovanou prácou </strong>pri nanášaní zlatých plátkov.</span></p>
+<h2 style="text-align: justify;"><strong>Dokážu zlaté obrazy z kolekcie PREMIUM ART zvýšiť hodnotu nehnuteľnosti?</strong></h2>
+<p style="text-align: justify;"><span>Zlaté obrazy sú jedinečné kúsky do interiéru, ktoré zvyšujú hodnotu nehnuteľnosti. Vďaka originálnemu prevedeniu a tomu, že ide o zriedkavý typ umenia, budete mať doma určite viac návštev, pretože všetci budú chcieť vidieť, ako ste si krásne zariadili svoju domácnosť.</span></p>
+<p style="text-align: justify;"><span>Vaši priatelia budú radi prichádzať do vášho domova, aby obdivovali obrazy zavesené na stene.  Uvidíte, ako tento typ obrazov dopomôže k lepšej atmosfére u vás doma.</span></p>
+<p style="text-align: justify;"><span>Preto, ak hľadáte jedinečný doplnok do svojho interiéru, vyberte si našu novinku PREMIUM ART! Bez ohľadu na priestor, obrazy s nanesenými zlatými plátkami okamžite dodajú pocit sofistikovanosti a luxusu. Budú skvelým doplnkom pre vaše steny.</span></p>
+<p style="text-align: justify;"><span><img src="/fotky12085/popis/obraz-na-stenu-so-zlatymi-platkami_premium-art_XOGPA001E1-x.jpg" alt=" width=" 1080=" height="1080" width="1080" caption="false" /></span></p>
+<h2 style="text-align: justify;"><strong>Ako sa PREMIUM ART líši od iných dekorácií?</strong></h2>
+<ol>
+<li style="text-align: justify;"><span> Využívame novodobú digitálnu vodeodolnú fototlač, vďaka ktorej sú farby na na plátne sýte, ponechávajú svetlostálosť a nikdy nevyblednú</span></li>
+<li style="text-align: justify;"><span> <strong>Zlaté plátky</strong> nanášame starostlivo kúsok po kúsku. Výsledkom je perfektne vyzerajúci obraz, ktorý na stene pôsobí luxusne </span></li>
+<li style="text-align: justify;"><span> Na tlač používame špeciálne talianske plátno pod vlastnou značkou ARTMIE, ktoré je vyrobené zo 100% bavlny. Vyznačuje sa svojou štruktúrou, na slnku nepresvitá a jemný lesk na povrchu plátna dotvára požadujúci lesklý efekt</span></li>
+<li style="text-align: justify;"><span> Rámy sú zhotovené z kvalitných, pevných smrekových líšt ARTMIE, ktoré sú na hranách zaoblené. Tento fakt je veľmi dôležitý, pretože sa plátno na hranách nepoškodí</span></li>
+<li style="text-align: justify;"><span> Sme EKO, a preto používame vysokokvalitné farby, ktoré sú bez zápachu a nevypúšťajú do ovzdušia žiadne škodlivé látky. Záleží nám na tom, aby sme my a naše deti žili v zdravom prostredí</span></li>
+<li style="text-align: justify;"><span> Kúpou obrazu podporíš domácu produkciu. Všetky obraze produkujeme v našich výrobných halách</span></li>
+<li style="text-align: justify;"><span> Produkty balíme do bublinkovej fólie a kvalitnej kartónovej krabice, aby sa predišlo ich poškodeniu. Zadarmo k nim pridávame skrutky a háčik na zavesenie</span></li>
+<li style="text-align: justify;"><span> Zlaté obrazy sú jedinečným kúskom do interiéru a ich popularita v posledných rokoch vzrástla, pretože sa nimi dajú skrášliť celé haly a miestnosti domov, hotelov, reštaurácií a rôznych iných miest.</span></li>
+</ol>    </div>
+</div><!-- END description-->
+          </div><!-- end in the center -->
+          <div class="clear"></div>
+         <div class='homepage_blog_4 type-art'>      <div class="article">
+      <div class="image">
+                            <a class="image-article-link" href="/blog/trendy-farby-pre-jar-a-leto-2023-ako-ich-preniest-do-interieru">                  <img src="/fotky12085/fotom/_b_1721Trendy-farby-pre-jar-a-leto-2023-Ako-ich-preniest-do-interieru_cover.png" alt="Trendy farby pre jar a leto 2023: Ako ich preniesť do interiéru?"/>
+              </a>                            </div>
+      <div class="inner-article">
+          <h3><a href="/blog/trendy-farby-pre-jar-a-leto-2023-ako-ich-preniest-do-interieru">Trendy farby pre jar a leto 2023: Ako ich preniesť do interiéru?</a></h3>
+          <p class="date"><i>10.03.2023</i></p>
+          <p class="perex">Nová sezóna prináša nové trendy a farby, ktoré môžete integrovať do svojho domova. Jar a leto 2023 je...</p>
+          <div class="btn"><a class="detail-btn" href="/blog/trendy-farby-pre-jar-a-leto-2023-ako-ich-preniest-do-interieru"> Celý článok&nbsp;&gt;</a></div>
+      </div>
+  </div>
+        <div class="article">
+      <div class="image">
+                            <a class="image-article-link" href="/blog/nastenne-hodiny-pre-deti-toto-je-dovod-preco-su-potrebne">                  <img src="/fotky12085/fotom/_b_1720Nastenne-detske-hodiny-Preco-je-dôlezite-aby-ich-mali-deti-v-izbe.png" alt="Nástenné detské hodiny: Prečo je dôležité, aby ich mali deti v izbe?"/>
+              </a>                            </div>
+      <div class="inner-article">
+          <h3><a href="/blog/nastenne-hodiny-pre-deti-toto-je-dovod-preco-su-potrebne">Nástenné detské hodiny: Prečo je dôležité, aby ich mali deti v izbe?</a></h3>
+          <p class="date"><i>08.03.2023</i></p>
+          <p class="perex">Pre deti je význam času veľmi dôležitý, keďže sa postupne dostávajú do štádiá, kedy sa učia plánovať...</p>
+          <div class="btn"><a class="detail-btn" href="/blog/nastenne-hodiny-pre-deti-toto-je-dovod-preco-su-potrebne"> Celý článok&nbsp;&gt;</a></div>
+      </div>
+  </div>
+        <div class="article">
+      <div class="image">
+                            <a class="image-article-link" href="/blog/ako-spravne-zavesit-viacdielny-obraz">                  <img src="/fotky12085/fotom/_b_1719Ako-spravne-zavesit-viacdielny-obraz-na-platne_cover.png" alt="Ako správne zavesiť viacdielny obraz na plátne? (VIDEO)"/>
+              </a>                            </div>
+      <div class="inner-article">
+          <h3><a href="/blog/ako-spravne-zavesit-viacdielny-obraz">Ako správne zavesiť viacdielny obraz na plátne? (VIDEO)</a></h3>
+          <p class="date"><i>01.03.2023</i></p>
+          <p class="perex">Viacdielny obraz na plátne môže byť vynikajúcim spôsobom, ako dodať vašim stenám zaujímavosť. Správne...</p>
+          <div class="btn"><a class="detail-btn" href="/blog/ako-spravne-zavesit-viacdielny-obraz"> Celý článok&nbsp;&gt;</a></div>
+      </div>
+  </div>
+        <div class="article article-last">
+      <div class="image">
+                            <a class="image-article-link" href="/blog/najlepsie-valentinske-darceky-10-perfektnych-tipov">                  <img src="/fotky12085/fotom/_b_1700Najlepsi-valentinsky-darcek-pre-neho-a-pre-nu.png" alt="Najlepšie valentínske darčeky: 10 perfektných tipov"/>
+              </a>                            </div>
+      <div class="inner-article">
+          <h3><a href="/blog/najlepsie-valentinske-darceky-10-perfektnych-tipov">Najlepšie valentínske darčeky: 10 perfektných tipov</a></h3>
+          <p class="date"><i>11.01.2023</i></p>
+          <p class="perex">Máme najlepší zoznam pre valentínske darčeky. 14 februára je deň zamilovaných, a preto či už hľadáte...</p>
+          <div class="btn"><a class="detail-btn" href="/blog/najlepsie-valentinske-darceky-10-perfektnych-tipov"> Celý článok&nbsp;&gt;</a></div>
+      </div>
+  </div>
+  <div class="clear"></div></div><link rel='stylesheet' type='text/css' href='/css/blog-widget/type-art.css'>            </div><!-- END CENTER PAGE -->
+        <div class="clear"></div>
+
+        
+                  </div><!-- END AROUND PAGE -->
+
+      <div id="footer" class="footer_hide"><!-- FOOTER -->
+
+                      </div><!-- END FOOTER -->
+                  </div><!-- END PAGE -->
+    </div><!-- END HACK BOX -->
+      </div>          <div id="und_footer" align="center">
+    <footer class="sk-section__footer">
+<div class="sk-container">
+<div class="sk-footer">
+<div class="sk-footer__block"><a class="sk-footer__info-item" href="/predaj-obrazov-myhome">O nás</a> <a class="sk-footer__info-item" href="/moznosti-platby-a-dopravy-pre-obrazy-na-stenu">Doprava a platba</a> <a class="sk-footer__info-item" href="/predaj-obrazov-faq">Často kladené otázky / FAQ</a> <a class="sk-footer__info-item" href="/predaj-obrazov-obchodne-podmienky">Všeobecné obchodné podmienky</a> <a class="sk-footer__info-item" href="/predaj-obrazov-velkoobchod">Veľkoobchod a spolupráca</a> <a class="sk-footer__info-item" href="/predaj-obrazov-kontakt">Kontakt</a></div>
+<div class="sk-social">
+<h3 class="sk-social__title">Dávame vašim stenám život a vám pocit domova</h3>
+<a class="sk-social__block" href="https://www.facebook.com/obraznastenu"> <img class="sk-social__block-facebook" src="/fotky12085/ons_new/facebook-artmie-paint-logo.png" alt="fb" width="78" height="79" /> <span class="sk-social__block-wrapper"> <span>Inšpirujte sa našimi nápadmi</span> <span class="sk-social__block-wrapper-fb">na Facebooku</span> </span> <img src="/fotky12085/ons_new/like-icon.svg" alt="img" /> </a>
+<div class="sk-social__row">
+<p class="sk-social__row-text">Sleduj nás a zistíš, aké sú aktuálne trendy v interiéri <img src="/fotky12085/ons_new/smiley-artmie.png" width="20" height="20" /></p>
+<a class="sk-social__link" href="https://www.instagram.com/obraznastenu.sk/"> <img src="/fotky12085/ons_new/instagram-icon.svg" alt="inst" /> <span>Instagram</span> </a> <a class="sk-social__link" href="https://www.tiktok.com/@obraznastenu?lang=en"> <img src="/fotky12085/ons_new/tiktok-icon.svg" alt="tiktok" /> <span>Tiktok</span> </a> <a class="sk-social__link" href="https://www.youtube.com/@Obraznastenusk"> <img src="/fotky12085/ons_new/yt-icon.svg" alt="youtube" /> <span>Youtube</span> </a></div>
+</div>
+<div class="sk-footer__block sk-footer__delivery"><a> <img class="sk-footer__logo" src="/fotky12085/ons_new/artmie-logo-footer.png" alt="logo" /> </a>
+<p class="sk-footer__address-item"></p>
+<p class="sk-footer__address-item"><img src="/fotky12085/ons_new/telefon-icon.png" alt="" width="20" height="20" /> <a href="callto:0572225040">057 2225 040</a></p>
+<p class="sk-footer__address-item"><img src="/fotky12085/ons_new/mail-icon.png" alt="" width="22" height="16" /> <a href="mailto:info@obraznastenu.sk">info@obraznastenu.sk</a></p>
+<a class="sk-footer__address-item sk-footer__address-link" href="/fotky12085/gdpr/docs/podmienky-ochrany-osobnch-udajov-onssk_ARTMIE_4_6_20.pdf" target="_blank" rel="noopener">Info o spracovaní osobných údajov</a></div>
+</div>
+</div>
+<div class="sk-footer__line"> </div>
+<div class="sk-container">
+<div class="sk-footer__reference">
+<div class="sk-footer__reference-item"><img class="sk-footer__reference-img" src="/fotky12085/ons_new/heureka-icon.svg" alt="img" />
+<div class="sk-footer__reference-wrapper">
+<h5 class="sk-footer__reference-title">Zlatý certifikát Heureka</h5>
+<p class="sk-footer__reference-text">Overené zákazníkmi - 100%</p>
+</div>
+</div>
+<div class="sk-footer__reference-item"><a href="https://www.europeanartawards.com/"><img class="sk-footer__reference-img" src="/fotky12085/ons_new/eaa-icon.png" alt="img" /></a>
+<div class="sk-footer__reference-wrapper">
+<h5 class="sk-footer__reference-title"><a href="https://www.europeanartawards.com/">European Art Awards</a></h5>
+<p class="sk-footer__reference-text"><a href="https://www.europeanartawards.com/">Organizátor medzinárodnej súťaže</a></p>
+</div>
+</div>
+<div class="sk-footer__reference-item"><a href="/fotky12085/ons_new/Plag%C3%A1t_Artmie.pdf" target="_blank" rel="noopener"><img class="sk-footer__reference-img" src="/fotky12085/ons_new/zsi-icon.png" alt="img" /></a>
+<div class="sk-footer__reference-wrapper">
+<h5 class="sk-footer__reference-title"><a href="/fotky12085/ons_new/Plag%C3%A1t_Artmie.pdf" target="_blank" rel="noopener">Európsky sociálny fond</a></h5>
+<p class="sk-footer__reference-text"><a href="/fotky12085/ons_new/Plag%C3%A1t_Artmie.pdf" target="_blank" rel="noopener">Zamestnanosť a sociálna inklúzia</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sk-footer__line"> </div>
+<div class="sk-container">
+<div class="sk-footer__bottom">
+<div class="sk-footer__bottom-wrapper"><a class="sk-footer__bottom-link" href="http://www.obraznastenu.sk">obraznastenu.sk</a> | <a class="sk-footer__bottom-link" href="http://www.obraznastenu.cz">obraznastenu.cz</a> | <a class="sk-footer__bottom-link" href="http://www.kephaz.hu">kephaz.hu</a> | <a class="sk-footer__bottom-link" href="http://www.slikomania.hr">slikomania.hr</a> | <a class="sk-footer__bottom-link" href="http://www.slikomania.rs">slikomania.rs</a> | <a class="sk-footer__bottom-link" href="http://www.slikomania.si">slikomania.si</a> | <a class="artmie-highlight" href="http://www.artmie.com">ARTMIE.COM</a> | <a class="sk-footer__bottom-link" href="http://www.slikomania.ba">slikomania.ba</a> | <a class="sk-footer__bottom-link" href="http://www.tablomania.ro">tablomania.ro</a> | <a class="sk-footer__bottom-link" href="http://www.kartinomania.bg">kartinomania.bg</a> | <a class="sk-footer__bottom-link" href="http://www.slikomania.mk">slikomania.mk</a> | <a class="sk-footer__bottom-link" href="http://www.pinakomania.gr">pinakomania.gr</a> | <a class="sk-footer__bottom-link" href="http://www.tablomania.it">tablomania.it</a><a class="sk-footer__bottom-link" p="">© 2007-2022 ARTMIE, spol. s r.o. </a></div>
+</div>
+</div>
+</footer>
+<script>// <![CDATA[
+$(function() {
+$('#left2').insertBefore('#und_footer');
+});
+// ]]></script>
+<script>// <![CDATA[
+$('.box-carousel.owl-carousel').owlCarousel({
+responsive:{
+    0:{
+        items:2,
+        nav:true
+    },
+
+    960:{
+        items:3,
+        nav:true
+    },
+
+    1229:{
+        items:4,
+        nav:true
+    },
+}
+})
+// ]]></script>
+<!--______________________LiveAgent__________________-->
+<script type="text/javascript">// <![CDATA[
+(function(d, src, c) { var t=d.scripts[d.scripts.length - 1],s=d.createElement('script');s.id='la_x2s6df8d';s.async=true;s.src=src;s.onload=s.onreadystatechange=function(){var rs=this.readyState;if(rs&&(rs!='complete')&&(rs!='loaded')){return;}c(this);};t.parentElement.insertBefore(s,t.nextSibling);})(document,
+'https://artmie.ladesk.com/scripts/track.js',
+function(e){ LiveAgent.createButton('1bpqqq43', e); });
+// ]]></script>      </div>
+
+<br />    <div id="left2"><!-- left2 -->
+  <div id="inleft2"><!-- in left2 -->
+    <div class="newsletter_box"><!-- newsletter_widget -->
+      <form name="newsletter" action="/obraznastenu/newsletter-add" method="post" enctype="multipart/form-data">
+        <label for="newsletter_mail" class="title_left2"> Odoberať newsletter</label>
+        <p class="wrapper_newsletter">
+          <input name="newsletter_mail" type="text" value="@" class="inputBox" id="newsletter_mail" >
+                        <span class="wrapper_newsletter_submit">
+            <input type="submit" name="newsletter_submit" value="" id="newsletter_submit">
+          </span>
+                    </p>
+                <p class="gdpr-newsletter-wrapper">
+                    <input type="checkbox" class="gdpr-newsletter-accept" name="gdpr_accept" value="1" id="gdprAccept_64351438eac0d" />
+        <label for="gdprAccept_64351438eac0d">
+           Súhlasím so <a href="/fotky12085/gdpr/docs/2020_07_06_085629_3_podmienky-ochrany-osobnch-udajov-onssk_ARTMIE_4_6_20.pdf" target="_blank" data-tip data-tip-content="gdprShortTerms_64351438eac45" data-tip-options='{"showArrow":false,"class":"terms-tooltip"}'>spracovaním osobných údajov</a> pre zasielanie <strong>newsletteru</strong>.            </label>
+      </p>
+                <div class="tip-content terms-content" id="gdprShortTerms_64351438eac45">
+        Podmienky ochrany osobných údajov <br />
+Zákonným dôvodom spracovanie Vašich osobných údajov je Váš súhlas dávaný týmto správcovi v zmysle čl. 6 ods. 1 písm. a) Nariadenie Európskeho parlamentu a Rady 2016/679 o ochrane fyzických osôb pri spracovaní osobných údajov a o voľnom pohybe týchto údajov a o zrušení smernice 95/46/ES. Účelom spracovania Vašich osobných údajov je zasielanie daňových dokladov za prenájom systému, obchodných oznámení a činenia iných marketingových aktivít správcom voči Vašej osobe.          </div>
+      <script>
+        WA.Translation._error_empty_field = " Toto pole nesmie byť prázdne";
+        WA.Translation._error_invalid_mail = " E-mailová adresa je v nesprávnom formáte";
+      </script>
+                            <div class="captcha-box hidden">
+          
+    <script type="text/javascript">
+      var captchaCallback = captchaCallback || function() {
+        $(".g-recaptcha").each(function() {
+          if(!this.children.length) {
+            grecaptcha.render(this, {"sitekey" : "6LcysJ4hAAAAAMxD_7SSQqfrKTP186QfD1sOlipF"});
+          }
+        });
+      };
+    </script><script src="https://www.google.com/recaptcha/api.js?onload=captchaCallback&render=explicit" async defer></script><div class="g-recaptcha" data-sitekey="6LcysJ4hAAAAAMxD_7SSQqfrKTP186QfD1sOlipF"></div>            </div>
+                  </form>
+    </div><!-- end newsletter_widget -->
+  </div><!-- end inleft2 -->
+</div><!-- end left2 -->
+      <div class="myfooter">
+    <div class="footer-boxes box-4">
+          <div class="footer-box box-item">
+  <h4>filtre + heureka carousel</h4>      <div class="item-content">
+    <p>
+<script>// <![CDATA[
+const filterWrapper = document.querySelector('.centerpage_params_filter_areas')
+const rollDown = document.querySelector('.p-rolldown')
+let filterNewBtn = document.createElement("span")
+filterNewBtn.innerHTML = "&#10003"
+filterNewBtn.classList.add('new-filter-icon')
+function disableFilter() {
+    const bl = document.getElementById('centerpage_params_filter_area')
+    bl.classList.remove('p-rolled-down')
+}
+filterNewBtn.setAttribute("onclick", "disableFilter()")
+filterWrapper.after(filterNewBtn);
+// ]]></script>
+</p>
+<!--______________________SCRIPTS DESC__________________-->
+<p>
+<script type="text/javascript" src="/js/lib/dummy.js"></script>
+</p>
+<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>-->
+<p>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js"></script>
+<script type="text/javascript">// <![CDATA[
+$('.sk-owl-carousel').slick({
+    dots: false,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 4,
+    slidesToScroll: 2,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    responsive: [
+        {
+            breakpoint: 992,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 2
+            }
+        },
+        {
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1
+            }
+        },
+        {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }
+    ]
+});
+// ]]></script>
+<script>// <![CDATA[
+document.querySelector('.slick-prev').innerHTML = "<"
+document.querySelector('.slick-next').innerHTML = ">"
+// ]]></script>
+<script type="text/javascript">// <![CDATA[
+$('.gifs2-1').slick({
+    dots: true,
+    navigation : false,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+});
+// ]]></script>
+</p>      </div>
+</div>
+    <div class="footer-box box-item">
+  <h4>product description carousel</h4>      <div class="item-content">
+    <!--______________________SCRIPTS DESC__________________-->
+<p>
+<script type="text/javascript" src="/js/lib/dummy.js"></script>
+</p>
+<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>-->
+<p>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js"></script>
+<script type="text/javascript">// <![CDATA[
+$('.single-item').slick({
+    dots: false,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    responsive: [
+        {
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }
+    ]
+});
+// ]]></script>
+<script>// <![CDATA[
+document.querySelector('.slick-prev').innerHTML = "<"
+document.querySelector('.slick-next').innerHTML = ">"
+// ]]></script>
+</p>      </div>
+</div>
+    <div class="footer-box box-item">
+  <h4>mobile menu no redirect</h4>      <div class="item-content">
+    <p>
+<script>// <![CDATA[
+const nodeLinks = document.querySelectorAll('.sk-menu__item-link-disable')
+const linksList = [...nodeLinks]
+
+linksList.forEach((link) => {
+if (window.innerWidth < 992) {
+    link.removeAttribute('href')
+}
+})
+// ]]></script>
+</p>      </div>
+</div>
+    <div class="footer-box box-item">
+  <h4>fixed menu + blog widget moved</h4>      <div class="item-content">
+    <p>
+<script>// <![CDATA[
+jQuery(function ($) {
+    $(window).scroll(function fix_element() {
+        if ($(window).width() > 991) {
+            $('.sk-section__menu').css(
+                $(window).scrollTop() > 140
+                    ? { 'position': 'fixed', 'top': '0' }
+                    : { 'position': 'absolute', 'top': '127px' }
+            );
+        }
+        return fix_element;
+    }());
+});
+// ]]></script>
+<script>// <![CDATA[
+const changePositionOfBlog = () => {
+const homepageBlog = document.querySelector('.homepage_blog_4')
+const mlInfoBlock = document.querySelector('.ml-info-block')
+if (!mlInfoBlock) return
+mlInfoBlock.prepend(homepageBlog)
+}
+changePositionOfBlog()
+// ]]></script>
+</p>      </div>
+</div>
+        </div>
+          <div class="contenttwo">
+    <p> Vytvorené systémom <a href="http://www.webareal.sk" target="_blank">www.webareal.sk</a></p>
+  </div>
+      </div>
+    </div>
+
+<script language="JavaScript" type="text/javascript">
+$(window).ready(function() {
+//	$(".loader").fadeOut("slow");
+});
+  function init_lupa_images()
+{
+  if(jQuery('img.lupa').length)
+  {
+    jQuery('img.lupa, .productFooterContent').qtip(
+    {
+      onContentUpdate: function() { this.updateWidth(); },
+      onContentLoad: function() { this.updateWidth(); },
+      prerender: true,
+      content: {
+        text: function() {
+
+          var $pID = '';
+
+          if($(this).attr('rel'))
+          {
+            $pID = $(this).attr('rel');
+          }
+          else
+          {
+            $pID = $(this).parent().parent().find('img.lupa').attr('rel');
+          }
+
+          var $lupa_img = jQuery(".bLupa"+$pID+":first");
+
+          if(!$lupa_img.length)
+          { // pokud neni obrazek pro lupu, dame obrazek produktu
+            $product_img = $(this).parent().parent().find('img.lupa:first');
+            if($product_img.length)
+            {
+              $lupa_img = $product_img.clone();
+            }
+          }
+          else
+          {
+            $lupa_img = $lupa_img.clone()
+          }
+
+          return($lupa_img);
+        }
+
+      },
+      position: {
+        my: 'top left',
+        target: 'mouse',
+        viewport: $(window),
+        adjust: {
+          x: 15,  y: 15
+        }
+      },
+      style: {
+        classes: 'ui-tooltip-white ui-tooltip-shadow ui-tooltip-rounded',
+        tip: {
+           corner: false
+        }
+      },
+      show: {
+        solo: true,
+        delay: 200
+      },
+      hide: {
+        fixed: true
+      }
+    });
+  }
+}
+$(document).ready(function() {
+$("#listaA a").click(function(){changeList();});
+$("#listaB a").click(function(){changeList();});
+if(typeof(init_lupa_images) === 'function')
+{
+init_lupa_images();
+}
+
+function changeList()
+{
+var className = $("#listaA").attr('class');
+if(className == 'selected')
+{
+  $("#listaA").removeClass('selected');
+  $("#listaB").addClass('selected');
+  $("#boxMojeID, #mojeid_tab").show();
+  $("#boxNorm").hide();
+}
+else
+{
+  $("#listaA").addClass('selected');
+  $("#listaB").removeClass('selected');
+  $("#boxNorm").show();
+  $("#boxMojeID, #mojeid_tab").hide();
+}
+}
+$(".print-button").click(function(e)
+{
+window.print();
+e.preventDefault();
+return false;
+})
+});
+</script>
+<span class="hide">YjI0Y</span>    <!-- Piwik -->
+<script type="text/javascript" src="//piwik.webareal.sk/piwik.js"></script>
+<script type="text/javascript">
+  var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.webareal.sk/" : "http://piwik.webareal.sk/");
+  try {
+    var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 12085);
+    piwikTracker.trackPageView();
+    piwikTracker.enableLinkTracking();
+  } catch (err) {
+  }
+</script><noscript><p><img src="//piwik.webareal.sk/piwik.php?idsite=12085" style="border:0" alt="" /></p></noscript>
+</div><script src="/wa_script/js/wa_url_translator.js?d=1" type="text/javascript"></script><script src="/wa_script/js/add_basket_v2.js?d=12&_= 2023-03-28-09-41" type="text/javascript"></script><script src="/wa_script/js/add_basket_fce.js?d=9&_= 2023-03-28-09-41" type="text/javascript"></script>    <script type="text/javascript">
+  variant_general = 1;
+  related_click = false;
+  BS.Basket.$variant = 2;
+  BS.Basket.$detail_buy = false;
+  BS.Basket.$not_bought_minimum = " Tento produkt je nutné objednať v minimálnom množstve:";
+  BS.Basket.basket_is_empty = ' Váš nákupný košík <span class="bold">je prázdny</span>';
+      BS.Basket.$wait_text = "Čakajte";
+          BS.Basket.$not_in_stock = "Požadované množstvo bohužiaľ nie je na sklade.";
+      uzivatel_id = 12085;
+  is_url_translated = false;
+      </script>
+  <script type="text/javascript">
+  WA.Google_analytics.activated = true;
+      WA.Google_analytics.page = "product detail Obrazy na plátne - PREMIUM ART – Čierny býk - 70x50 cm";
+    </script>
+  <div id="top_loading_container" class="top_loading_containers" style="z-index: 99998;position: fixed; top: 0px; left: 0px; width: 100%;">
+  <div id="top_loading_bar" class="top_loading_bars" style="height: 100%; width: 0;"></div>
+</div>
+    <script type="text/javascript" charset="utf-8" src="/js/responsiveMenu.js?_=2023-03-28-09-41"></script>
+<script type="text/javascript">
+var responsive_articlemenu_name = ' Menu';
+$(document).ready(function(){
+        var isFirst = false;
+        var menu = new WA.ResponsiveMenu('#left-box');
+  menu.setArticleSelector('#rArticleMenu');
+  menu.setEshopSelector('#rEshopMenu');
+  menu.render();
+        if($(".slider_available").is('body') || $(document.body).hasClass("slider-available")) {
+    (function(form, $) {
+      'use strict';
+      var $form = $(form),
+          expanded = false,
+          $body = $(document.body),
+          $input;
+      var expandInput = function() {
+        if(!expanded) {
+          $form.addClass("expand");
+          $body.addClass("search_act");
+          expanded = true;
+        }
+      };
+      var hideInput = function() {
+        if(expanded) {
+          $form.removeClass("expand");
+          $body.removeClass("search_act");
+          expanded = false;
+        }
+      };
+      var getInputValue = function() {
+        return $input.val().trim();
+      };
+      var setInputValue = function(val) {
+        $input.val(val);
+      };
+      if($form.length) {
+        $input = $form.find("input.inputBox");
+        $form.on("submit", function(e) {
+          if(!getInputValue()) {
+            e.preventDefault();
+            $input.focus();
+          }
+        });
+        $input.on("focus", function(e) {
+          expandInput();
+        });
+        $(document).on("click", function(e) {
+          if(!$form[0].contains(e.target)) {
+            hideInput();
+            setInputValue("");
+          }
+        });
+      }
+    })("#searchForm", jQuery);
+  }
+      });
+</script>
+</body>
+</html>
+
+<script type="text/javascript">
+//<![CDATA[
+var _hwq = _hwq || [];
+    _hwq.push(['setKey', '7A286A1B2D30608840924E72921839E6']);_hwq.push(['setTopPos', '60']);_hwq.push(['showWidget', '21']);(function() {
+    var ho = document.createElement('script'); ho.type = 'text/javascript'; ho.async = true;
+    ho.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.heureka.sk/direct/i/gjs.php?n=wdgt&sak=7A286A1B2D30608840924E72921839E6';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ho, s);
+})();
+//]]>
+</script>
